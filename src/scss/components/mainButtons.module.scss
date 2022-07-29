@@ -1,0 +1,82 @@
+@use '../variables/variables.scss' as vars;
+
+.container{
+    background: vars.$white;
+    padding:20px;
+    border-radius: 10px;
+    position: relative;
+    top:60px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+    transform: skew(-8deg ,5deg) rotate(-5deg);
+ 
+    box-shadow: 5px 5px #9190D9,
+                6px 6px #9190D9,
+                7px 7px #9190D9,
+                8px 8px #9190D9,
+                9px 9px #9190D9,
+                10px 10px #9190D9,
+            11px 11px #9190D9,
+            12px 12px vars.$main-blue,
+            13px 13px vars.$main-blue,
+            14px 14px vars.$main-blue,
+            15px 15px vars.$main-blue,
+            16px 16px 15px rgba($color: vars.$black, $alpha: 0.3);
+}
+
+.mainLink{
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.5rem;
+    padding: 10px 15px;
+    z-index: 10000;
+    position: relative;
+   background:#674FFF;
+   border-radius: 5px;
+   color:vars.$white;
+   box-shadow: 5px 5px #9190D9,
+                6px 6px #9190D9,
+                7px 7px #9190D9,
+                8px 8px #9190D9,
+                9px 9px #9190D9,
+                10px 10px #9190D9,
+            11px 11px #9190D9,
+            12px 12px vars.$main-blue,
+            13px 13px vars.$main-blue,
+            14px 14px vars.$main-blue,
+            15px 15px vars.$main-blue,
+            16px 16px 15px rgba($color: vars.$black, $alpha: 0.3);
+            transition:0.5s ease all;
+    transform: skew(-8deg ,5deg) rotate(-5deg);
+
+
+            &:hover{
+                box-shadow: 5px 5px #9190D9,
+                6px 6px #9190D9,
+                7px 7px #9190D9,
+               
+            8px 8px vars.$main-blue,
+            9px 9px vars.$main-blue,
+            10px 10px 15px rgba($color: vars.$black, $alpha: 0.3);
+            }
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    column-gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    row-gap: 30px;
+}
+
+.currentTime{
+    font-size:1.4rem;
+    line-height: 1.6rem;
+    font-weight: 600;
+    color:vars.$black
+}
+

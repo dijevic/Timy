@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Square+Peg&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap');
+*{
+    box-sizing: border-box;
+    padding:0px;
+    margin:0px;
+    border: none;
+    font-family: 'Quicksand';
+    font-weight:400;
+    text-decoration: none;
+    list-style: none;
+
+}
+
+a{
+    color: #000;
+}
+
+html{
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+body{
+    min-height: 100vh;
+    display:flex;
+}
+
+#root{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+

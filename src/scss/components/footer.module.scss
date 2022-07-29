@@ -1,0 +1,26 @@
+@use '../variables/variables.scss' as vars ;
+
+.footer{
+ 
+    width: 100%;
+    left: 0;
+    background: #1E1B2E;
+    margin-top: 150px;
+}
+
+.footerText{
+    line-height:1.4rem;
+    text-align: center;
+    padding: 10px;
+    color: vars.$white;
+    font-weight: 600;
+
+    a{
+        margin-left: 10px;
+        color:#00CECB;
+    font-weight: 700;
+
+        
+    }
+}
+
