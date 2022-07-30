@@ -1,6 +1,6 @@
 @use '../variables/variables.scss' as vars ;
 
-.main{
+.mainContainer{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,5 +85,10 @@
     .moon{
         position: relative;
         top: 90px;
+    }
+
+    .astronaut1{
+        position:relative;
+        top: 70px;
     }
 }

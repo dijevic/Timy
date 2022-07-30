@@ -7,25 +7,25 @@ import styles from '../scss/components/home.module.scss'
 import shibaImg from '../assets/shiba.png';
 import img from '../assets/zyro-image.png';
 import moonImg from '../assets/moon.png';
+import { TextComponent } from '../components/home/TextComponent';
 
 export const Home = () => {
 
 
 
     return (
-        <>
-            <main className={styles.main}>
-                <div className={styles.textContainer}>
-                    <h1 className={styles.title}>Timy</h1>
-                    <p className={styles.text}>Plan your Work and stay productive</p>
 
-                    <MainButtons />
-                </div>
+        <main >
+            <div className={styles.mainContainer}>
+
+                <TextComponent />
+                <MainButtons />
 
 
-            </main>
+            </div>
 
             <div className={styles.imageContainer}>
+
                 <img className={styles.imageHome}
                     src={img}
                     alt="astronaut" />
@@ -34,13 +34,18 @@ export const Home = () => {
                     alt="moon"
 
                 />
-                <img className={styles.imageHome}
+                <img className={`${styles.imageHome} ${styles.astronaut1}`}
                     src={shibaImg}
                     alt="astronaut" />
             </div>
 
             <Footer />
-        </>
+
+
+        </main>
+
+
+
 
 
     )
