@@ -1,4 +1,4 @@
-import React, from 'react'
+import React from 'react'
 
 import { Footer } from '../components/footer/Footer'
 import { MainButtons } from '../components/MainButtons'
