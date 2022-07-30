@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, from 'react'
 
 import { Footer } from '../components/footer/Footer'
 import { MainButtons } from '../components/MainButtons'
@@ -28,15 +28,15 @@ export const Home = () => {
             <div className={styles.imageContainer}>
                 <img className={styles.imageHome}
                     src={img}
-                    alt="astronaut logo" />
+                    alt="astronaut" />
                 <img className={`${styles.imageHome} ${styles.moon}`}
                     src={moonImg}
-                    alt="moon image"
+                    alt="moon"
 
                 />
                 <img className={styles.imageHome}
                     src={shibaImg}
-                    alt="astronaut logo" />
+                    alt="astronaut" />
             </div>
 
             <Footer />
