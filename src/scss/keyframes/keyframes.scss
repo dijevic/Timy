@@ -1,0 +1,15 @@
+@keyframes scale {
+    0%{transform:scale(0)};
+    100%{transform:scale(1)};
+    
+}
+@keyframes border {
+    0%{border-radius: 100%};
+    100%{border-radius: 10px};
+    
+}
+@keyframes opacityAnimation {
+    0%{opacity:0};
+    100%{opacity:1};
+    
+}

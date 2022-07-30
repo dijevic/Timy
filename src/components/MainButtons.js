@@ -9,9 +9,9 @@ export const MainButtons = () => {
             <p className={styles.currentTime}>12:00 pm New York !</p>
 
             <div className={styles.buttons}>
-                <Link className={styles.mainLink} to="/pomodoro" >Pomodoro</Link>
-                <Link className={styles.mainLink} to="/cronometro" >Cronometro</Link>
-                <Link className={styles.mainLink} to="/temporizador" >Temporizador</Link>
+                <Link className={`${styles.mainLink} ${styles.link1}`} to="/pomodoro" >Pomodoro</Link>
+                <Link className={`${styles.mainLink} ${styles.link2}`} to="/cronometro" >Cronometro</Link>
+                <Link className={`${styles.mainLink} ${styles.link3}`} to="/temporizador" >Temporizador</Link>
             </div>
         </div>
     )

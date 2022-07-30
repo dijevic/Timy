@@ -45,7 +45,7 @@
      
     }
 
-    .container{
+    .textContainer{
         max-width: 1000px;
         margin: 0px auto;
         display: flex;
@@ -57,4 +57,33 @@
      
     }
 
+}
+
+.imageContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 50px auto;
+}
+
+.imageHome{
+    width: 100%;
+    max-width: 300px;
+    filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.2));
+
+}
+
+
+@media screen and (min-width: 768px){
+    .imageContainer{
+        display: flex;
+        flex-direction: row;
+         column-gap: 50px;
+         margin-top:100px
+    }
+
+    .moon{
+        position: relative;
+        top: 90px;
+    }
 }
