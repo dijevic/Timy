@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
 import { Footer } from '../components/footer/Footer'
 import { MainButtons } from '../components/MainButtons'
@@ -9,6 +9,9 @@ import img from '../assets/zyro-image.png';
 import moonImg from '../assets/moon.png';
 
 export const Home = () => {
+
+
+
     return (
         <>
             <main className={styles.main}>
@@ -23,9 +26,17 @@ export const Home = () => {
             </main>
 
             <div className={styles.imageContainer}>
-                <img className={styles.imageHome} src={img} alt="astronaut logo" />
-                <img className={`${styles.imageHome} ${styles.moon}`} src={moonImg} alt="moon image" />
-                <img className={styles.imageHome} src={shibaImg} alt="astronaut logo" />
+                <img className={styles.imageHome}
+                    src={img}
+                    alt="astronaut logo" />
+                <img className={`${styles.imageHome} ${styles.moon}`}
+                    src={moonImg}
+                    alt="moon image"
+
+                />
+                <img className={styles.imageHome}
+                    src={shibaImg}
+                    alt="astronaut logo" />
             </div>
 
             <Footer />
