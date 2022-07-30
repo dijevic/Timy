@@ -4,10 +4,9 @@ import { Footer } from '../components/footer/Footer'
 import { MainButtons } from '../components/MainButtons'
 
 import styles from '../scss/components/home.module.scss'
-import shibaImg from '../assets/shiba.png';
-import img from '../assets/zyro-image.png';
-import moonImg from '../assets/moon.png';
-import { TextComponent } from '../components/home/TextComponent';
+
+import { HomeTitle } from '../components/home/HomeTitle';
+import { HomeImagesComponent } from '../components/home/HomeImagesComponent';
 
 export const Home = () => {
 
@@ -18,26 +17,13 @@ export const Home = () => {
         <main >
             <div className={styles.mainContainer}>
 
-                <TextComponent />
+                <HomeTitle />
                 <MainButtons />
 
 
             </div>
 
-            <div className={styles.imageContainer}>
-
-                <img className={styles.imageHome}
-                    src={img}
-                    alt="astronaut" />
-                <img className={`${styles.imageHome} ${styles.moon}`}
-                    src={moonImg}
-                    alt="moon"
-
-                />
-                <img className={`${styles.imageHome} ${styles.astronaut1}`}
-                    src={shibaImg}
-                    alt="astronaut" />
-            </div>
+            <HomeImagesComponent />
 
             <Footer />
 

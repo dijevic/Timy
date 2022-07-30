@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../../scss/components/home.module.scss'
 
-export const TextComponent = () => {
+export const HomeTitle = () => {
     return (
         <div className={styles.textContainer}>
             <h1 className={styles.title}>Timy</h1>
