@@ -40,6 +40,7 @@
    background:#674FFF;
    border-radius: 5px;
    color:vars.$white;
+   cursor:pointer;
 
    box-shadow: 5px 5px #9190D9,
                6px 6px #9190D9,
@@ -53,19 +54,19 @@
                14px 14px vars.$main-blue,
                15px 15px vars.$main-blue,
                16px 16px 15px rgba($color: vars.$black, $alpha: 0.3);
-               transition:0.5s ease all;
+               transition:0.2s ease all;
                transform: skew(-8deg ,5deg) rotate(-5deg);
 
 
-            &:hover{
-            box-shadow: 5px 5px #9190D9,
-            6px 6px #9190D9,
-            7px 7px #9190D9,
-               
-            8px 8px vars.$main-blue,
-            9px 9px vars.$main-blue,
-            10px 10px 15px rgba($color: vars.$black, $alpha: 0.3);
+            &:active{
+            box-shadow: 1px 1px 10px vars.$main-blue,
+       
             
+            }
+
+            &:hover{
+               transform: skew(-16deg ,5deg) rotate(-5deg);
+
             }
 }
 

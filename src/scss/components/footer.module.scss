@@ -4,7 +4,7 @@
  
     width: 100%;
     left: 0;
-    background: #1E1B2E;
+    background: vars.$darkBlue;
     margin-top: 100px;
     
 }
@@ -18,7 +18,7 @@
 
     a{
         margin-left: 10px;
-        color:#00CECB;
+        color:vars.$waterBlue;
     font-weight: 700;
 
         
@@ -27,7 +27,8 @@
 
 
 @media screen and (min-width:768px){
-    footer{
+    .footer{
         margin-top: 250px;
+        height: 50px;
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import styles from './../scss/components/mainButtons.module.scss'
+import styles from '../../scss/components/mainButtons.module.scss'
 
 export const MainButtons = () => {
     return (

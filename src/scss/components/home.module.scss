@@ -7,6 +7,7 @@
     position:relative;
     flex-direction: column;
     background:vars.$main-blue;
+    padding: 20px;
    
 
     .title{
@@ -63,7 +64,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 50px auto;
+    align-items: center;
+    margin: 70px auto;
 }
 
 .imageHome{
@@ -72,6 +74,7 @@
     filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.2));
 
 }
+
 
 
 @media screen and (min-width: 768px){
