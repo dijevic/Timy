@@ -1,4 +1,5 @@
 import React from 'react'
+import { ActionButtons } from '../components/pomodoro/ActionButtons'
 import { Input } from '../components/pomodoro/Input'
 import { PomodoroTitle } from '../components/pomodoro/PomodoroTitle'
 import { Time } from '../components/pomodoro/Time'
@@ -8,11 +9,15 @@ export const Pomy = () => {
     return (
         <div className={styles.mainContainer}>
 
-            <PomodoroTitle />
+            <div>
+                <PomodoroTitle />
 
-            <Input />
+                <Input />
 
-            <Time />
+                <Time />
+
+                <ActionButtons />
+            </div>
         </div>
 
 
