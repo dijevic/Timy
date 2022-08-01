@@ -4,7 +4,7 @@ import { StopSoundIcon } from '../svgs/StopSoundIcon'
 
 export const StopButton = () => {
     return (
-        <span className={styles.stopButton}>
+        <span className={styles.actionButton}>
             <StopSoundIcon />
         </span>
     )

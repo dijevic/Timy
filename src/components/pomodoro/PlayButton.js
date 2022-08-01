@@ -5,7 +5,7 @@ import styles from '../../scss/components/pomodoro.module.scss'
 
 export const PlayButton = () => {
     return (
-        <span className={styles.PlayButton}>
+        <span className={styles.actionButton}>
 
             <PlayIcon />
         </span>
