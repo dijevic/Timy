@@ -1,6 +1,7 @@
 import React from 'react'
 import { ActionButtons } from '../components/pomodoro/ActionButtons'
 import { Input } from '../components/pomodoro/Input'
+import { Navigation } from '../components/pomodoro/Navigation'
 import { PomodoroTitle } from '../components/pomodoro/PomodoroTitle'
 import { Time } from '../components/pomodoro/Time'
 import styles from '../scss/components/pomodoro.module.scss'
@@ -17,6 +18,8 @@ export const Pomy = () => {
                 <Time />
 
                 <ActionButtons />
+
+                <Navigation />
             </div>
         </div>
 

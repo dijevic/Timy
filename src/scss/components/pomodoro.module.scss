@@ -100,7 +100,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top:50px;
+    margin-top:80px;
 
     .actionButton{
         background:vars.$purple2;
@@ -109,7 +109,13 @@
         justify-content:center;
         padding: 20px;
         border-radius:100%;
-        box-shadow: 1px 1px 50px vars.$purple2;
+        box-shadow: 1px 1px 20px vars.$purple2;
+        cursor:pointer;
+
+        &:hover{
+        box-shadow: 1px 1px 10px vars.$purple2;
+
+        }
         
 
     }
