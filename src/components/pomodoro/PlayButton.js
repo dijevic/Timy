@@ -3,11 +3,12 @@ import { PlayIcon } from '../svgs/PlayIcon'
 
 import styles from '../../scss/components/pomodoro.module.scss'
 
-export const PlayButton = () => {
+export const PlayButton = ({ showStopButton }) => {
     return (
-        <span className={styles.actionButton}>
+        <div onClick={showStopButton}
+            className={styles.actionButton}>
 
             <PlayIcon />
-        </span>
+        </div>
     )
 }
