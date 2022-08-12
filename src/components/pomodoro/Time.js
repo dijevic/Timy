@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 
 import styles from '../../scss/components/pomodoro.module.scss'
 
-export const Time = ({ start, seconds }) => {
+export const Time = ({ start, seconds, minutes }) => {
 
 
     const seconsStart = useRef('00')
@@ -16,7 +16,7 @@ export const Time = ({ start, seconds }) => {
 
             <div className={styles.clock}>
                 <span className={styles.clockTime}>
-                    25 :
+                    {minutes} :
 
                     {
                         (!start) ? seconsStart.current :

@@ -4,7 +4,7 @@ import { StopButton } from './StopButton'
 import styles from '../../scss/components/pomodoro.module.scss'
 import { useEffect } from 'react'
 
-export const ActionButtons = ({ setstart, setSeconds, handleSeconds, startTiming, seconds }) => {
+export const ActionButtons = ({ setstart, setSeconds, setMinutes, handleSeconds, startTiming, seconds }) => {
 
     let secondsIntervalRef = useRef()
     const [showStoptButton, setshowStoptButton] = useState(false)
@@ -17,7 +17,7 @@ export const ActionButtons = ({ setstart, setSeconds, handleSeconds, startTiming
 
         if (showStoptButton) {
             setSeconds(60)
-
+            setMinutes(25)
         }
 
 
@@ -38,7 +38,9 @@ export const ActionButtons = ({ setstart, setSeconds, handleSeconds, startTiming
 
 
 
+
         } else {
+
             window.clearTimeout(secondsIntervalRef.current)
 
         }

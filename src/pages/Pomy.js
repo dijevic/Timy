@@ -14,13 +14,14 @@ import styles from '../scss/components/pomodoro.module.scss'
 export const Pomy = () => {
 
     const initialState = {
-        seconds: 5,
-        minutes: 5
+        seconds: 60,
+        minutes: 25
     }
 
 
     const [start, setstart] = useState(false)
     const [seconds, setseconds] = useState(initialState.seconds)
+    const [minutes, setMinutes] = useState(initialState.minutes)
 
 
 
@@ -30,6 +31,7 @@ export const Pomy = () => {
         if (seconds === 0) {
             setseconds(60)
             setseconds((sec) => sec - 1)
+            setMinutes((state) => state - 1)
         } else {
             setseconds((sec) => sec - 1)
 
@@ -48,8 +50,6 @@ export const Pomy = () => {
 
 
 
-
-
     return (
         <div className={styles.mainContainer}>
 
@@ -61,12 +61,14 @@ export const Pomy = () => {
                 <Time
                     start={start}
                     seconds={seconds}
+                    minutes={minutes}
                 />
 
                 <ActionButtons
                     setstart={setstart}
                     setSeconds={setseconds}
                     handleSeconds={handleSecondsCallback}
+                    setMinutes={setMinutes}
                     seconds={seconds}
                     startTiming={start}
                 />
