@@ -42,7 +42,7 @@ export const Pomy = () => {
         () => {
             handleSeconds()
         },
-        [seconds],
+        [seconds, handleSeconds],
     )
 
 
@@ -62,15 +62,14 @@ export const Pomy = () => {
                     start={start}
                     seconds={seconds}
                     minutes={minutes}
+                    handleSeconds={handleSecondsCallback}
+
                 />
 
                 <ActionButtons
                     setstart={setstart}
                     setSeconds={setseconds}
-                    handleSeconds={handleSecondsCallback}
                     setMinutes={setMinutes}
-                    seconds={seconds}
-                    startTiming={start}
                 />
 
                 <Navigation />

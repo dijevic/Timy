@@ -1,12 +1,39 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 
 import styles from '../../scss/components/pomodoro.module.scss'
 
-export const Time = ({ start, seconds, minutes }) => {
+export const Time = ({ start, seconds, minutes, handleSeconds }) => {
 
 
+    let secondsIntervalRef = useRef()
     const seconsStart = useRef('00')
     const loadingRef = useRef()
+
+
+
+
+    useEffect(() => {
+
+        if (start) {
+            // limpio el intervalo para que funciones bien
+            window.clearTimeout(secondsIntervalRef.current)
+
+            secondsIntervalRef.current = setTimeout(() => {
+                handleSeconds()
+
+            }, 1000);
+
+
+
+
+        } else {
+
+            window.clearTimeout(secondsIntervalRef.current)
+
+        }
+
+
+    }, [start, seconds, handleSeconds])
 
 
 

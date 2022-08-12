@@ -1,12 +1,10 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { PlayButton } from './PlayButton'
 import { StopButton } from './StopButton'
 import styles from '../../scss/components/pomodoro.module.scss'
-import { useEffect } from 'react'
 
-export const ActionButtons = ({ setstart, setSeconds, setMinutes, handleSeconds, startTiming, seconds }) => {
+export const ActionButtons = ({ setstart, setSeconds, setMinutes }) => {
 
-    let secondsIntervalRef = useRef()
     const [showStoptButton, setshowStoptButton] = useState(false)
 
     // todo atomizar funcion
@@ -22,34 +20,6 @@ export const ActionButtons = ({ setstart, setSeconds, setMinutes, handleSeconds,
 
 
     }
-
-    // manejar el intervalo
-
-    useEffect(() => {
-
-        if (startTiming) {
-            // limpio el intervalo para que funciones bien
-            window.clearTimeout(secondsIntervalRef.current)
-
-            secondsIntervalRef.current = setTimeout(() => {
-                handleSeconds()
-
-            }, 1000);
-
-
-
-
-        } else {
-
-            window.clearTimeout(secondsIntervalRef.current)
-
-        }
-
-
-    }, [startTiming, seconds])
-
-
-
 
 
 
