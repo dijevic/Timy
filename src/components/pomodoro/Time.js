@@ -15,7 +15,7 @@ export const Time = ({ start, seconds, minutes, handleSeconds }) => {
     useEffect(() => {
 
         if (start) {
-            // limpio el intervalo para que funciones bien
+            // cleaning the setTimeout to avoid ERRORS
             window.clearTimeout(secondsIntervalRef.current)
 
             secondsIntervalRef.current = setTimeout(() => {

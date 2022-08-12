@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 
 
 // components
@@ -26,7 +26,7 @@ export const Pomy = () => {
 
 
 
-
+    // discount minutes or seconds
     const handleSeconds = () => {
         if (seconds === 0) {
             setseconds(60)
@@ -38,12 +38,7 @@ export const Pomy = () => {
         }
 
     }
-    const handleSecondsCallback = useCallback(
-        () => {
-            handleSeconds()
-        },
-        [seconds, handleSeconds],
-    )
+
 
 
 
@@ -62,7 +57,7 @@ export const Pomy = () => {
                     start={start}
                     seconds={seconds}
                     minutes={minutes}
-                    handleSeconds={handleSecondsCallback}
+                    handleSeconds={handleSeconds}
 
                 />
 
@@ -70,6 +65,7 @@ export const Pomy = () => {
                     setstart={setstart}
                     setSeconds={setseconds}
                     setMinutes={setMinutes}
+                    start={start}
                 />
 
                 <Navigation />

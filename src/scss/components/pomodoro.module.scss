@@ -101,8 +101,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
     margin-top:40px;
+    column-gap: 25px;;
 
     .actionButton{
         background:vars.$purple2;
@@ -113,6 +113,9 @@
         border-radius:100%;
         box-shadow: 1px 1px 20px vars.$purple2;
         cursor:pointer;
+        animation-name:grow;
+        animation-iteration-count: initial;
+        animation-duration: 0.5s;
 
         &:hover{
         box-shadow: 1px 1px 10px vars.$purple2;
@@ -189,6 +192,11 @@
         }
     }
     
+}
+
+@keyframes grow {
+    0%{transform: scale(0);}
+    100%{transform: scale(1);}
 }
 
 @keyframes rotate{

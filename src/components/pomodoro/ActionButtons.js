@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { PlayButton } from './PlayButton'
 import { StopButton } from './StopButton'
 import styles from '../../scss/components/pomodoro.module.scss'
+import { PauseButton } from './PauseButton'
 
-export const ActionButtons = ({ setstart, setSeconds, setMinutes }) => {
+export const ActionButtons = ({ setstart, setSeconds, setMinutes, start }) => {
 
     const [showStoptButton, setshowStoptButton] = useState(false)
 
@@ -26,12 +27,15 @@ export const ActionButtons = ({ setstart, setSeconds, setMinutes }) => {
 
     return (
         <div className={styles.actionButtons}>
+            {
+                (start) && <StopButton />
+            }
 
 
             {
 
                 (showStoptButton) ?
-                    <StopButton showStopButton={handleStarTiming} /> :
+                    <PauseButton showStopButton={handleStarTiming} /> :
                     <PlayButton showStopButton={handleStarTiming} />
 
 
