@@ -37,6 +37,13 @@ export const Time = ({ start, seconds, minutes, handleSeconds, pauseActived }) =
 
 
 
+    // useEffect(() => {
+    //     loadingRef.current.style.animationDuration = `${1}s`
+    // }, [minutes])
+
+
+
+
 
     return (
         <div className={styles.clockContainer}>

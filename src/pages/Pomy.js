@@ -19,25 +19,40 @@ export const Pomy = () => {
     const [start, setstart] = useState(false)
     const [pauseActived, setPauseActived] = useState(false)
     const [seconds, setseconds] = useState(60)
-    const [minutes, setMinutes] = useState(25)
+    const [minutes, setMinutes] = useState(1)
 
 
 
 
     // discount minutes or seconds
     const handleSeconds = () => {
+
+        // discount the first minute when starting the timing
+
+        if (seconds === 60 && start) {
+            setMinutes((state) => state - 1)
+
+        }
+
+        // handle and reset the seconds whend it turns zero
+
         if (seconds === 0) {
             setseconds(60)
             setseconds((sec) => sec - 1)
             setMinutes((state) => state - 1)
+
         } else {
+
+            // discount seconds
             setseconds((sec) => sec - 1)
 
         }
 
+
+
+
+
     }
-
-
 
 
 

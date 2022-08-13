@@ -17,6 +17,8 @@ export const ActionButtons = ({ setstart, setSeconds, setMinutes, start, setPaus
         setstart(true)
         setPauseActived(false)
 
+
+
     }
 
     const handleStopTiming = () => {
