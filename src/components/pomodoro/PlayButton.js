@@ -5,10 +5,10 @@ import styles from '../../scss/components/pomodoro.module.scss'
 
 export const PlayButton = ({ showStopButton }) => {
     return (
-        <div onClick={showStopButton}
+        <button onClick={showStopButton}
             className={styles.actionButton}>
 
             <PlayIcon />
-        </div>
+        </button>
     )
 }

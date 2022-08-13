@@ -5,10 +5,10 @@ import { PauseIcon } from '../svgs/PauseIcon'
 
 export const PauseButton = ({ showStopButton }) => {
     return (
-        <div onClick={showStopButton}
+        <button onClick={showStopButton}
             className={styles.actionButton}>
 
             <PauseIcon />
-        </div>
+        </button>
     )
 }

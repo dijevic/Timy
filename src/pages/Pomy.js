@@ -13,15 +13,13 @@ import styles from '../scss/components/pomodoro.module.scss'
 
 export const Pomy = () => {
 
-    const initialState = {
-        seconds: 60,
-        minutes: 25
-    }
+
 
 
     const [start, setstart] = useState(false)
-    const [seconds, setseconds] = useState(initialState.seconds)
-    const [minutes, setMinutes] = useState(initialState.minutes)
+    const [pauseActived, setPauseActived] = useState(false)
+    const [seconds, setseconds] = useState(60)
+    const [minutes, setMinutes] = useState(25)
 
 
 
@@ -58,6 +56,7 @@ export const Pomy = () => {
                     seconds={seconds}
                     minutes={minutes}
                     handleSeconds={handleSeconds}
+                    pauseActived={pauseActived}
 
                 />
 
@@ -66,6 +65,11 @@ export const Pomy = () => {
                     setSeconds={setseconds}
                     setMinutes={setMinutes}
                     start={start}
+                    seconds={seconds}
+                    minutes={minutes}
+                    setPauseActived={setPauseActived}
+                    pauseActived={pauseActived}
+
                 />
 
                 <Navigation />

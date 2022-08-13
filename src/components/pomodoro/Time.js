@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react'
 
 import styles from '../../scss/components/pomodoro.module.scss'
 
-export const Time = ({ start, seconds, minutes, handleSeconds }) => {
+export const Time = ({ start, seconds, minutes, handleSeconds, pauseActived }) => {
 
 
     let secondsIntervalRef = useRef()
@@ -46,10 +46,11 @@ export const Time = ({ start, seconds, minutes, handleSeconds }) => {
                     {minutes} :
 
                     {
-                        (!start) ? seconsStart.current :
-                            (seconds < 60 && seconds >= 10) ? seconds :
-                                (seconds < 10 && seconds > 0) ? `0${seconds}` :
-                                    (seconds === 0 || seconds === 60) && seconsStart.current
+                        (!start && pauseActived) ? seconds :
+                            (!start && !pauseActived) ? seconsStart.current :
+                                (seconds < 60 && seconds >= 10) ? seconds :
+                                    (seconds < 10 && seconds > 0) ? `0${seconds}` :
+                                        (seconds === 0 || seconds === 60) && seconsStart.current
                     }
 
 
