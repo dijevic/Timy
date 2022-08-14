@@ -43,7 +43,7 @@ export const Time = ({ start, seconds, minutes, handleSeconds, pauseActived }) =
         } else {
             loadingRef.current.style.animationDuration = ``
         }
-    }, [start])
+    }, [start, minutes])
 
 
 
