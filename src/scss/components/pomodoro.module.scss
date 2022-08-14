@@ -92,6 +92,8 @@
             z-index: 10;
             animation-name:clockLoading;
             animation-iteration-count: initial;
+            animation-timing-function: ease-in-out;
+            animation-delay: 3s;
 
         }
     }

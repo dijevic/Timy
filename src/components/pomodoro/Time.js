@@ -37,9 +37,13 @@ export const Time = ({ start, seconds, minutes, handleSeconds, pauseActived }) =
 
 
 
-    // useEffect(() => {
-    //     loadingRef.current.style.animationDuration = `${1}s`
-    // }, [minutes])
+    useEffect(() => {
+        if (start) {
+            loadingRef.current.style.animationDuration = `${minutes * 60}s`
+        } else {
+            loadingRef.current.style.animationDuration = ``
+        }
+    }, [start])
 
 
 

@@ -27,6 +27,12 @@ export const Pomy = () => {
     // discount minutes or seconds
     const handleSeconds = () => {
 
+
+        if (seconds === 0 && minutes === 0) {
+            setstart(false)
+            setseconds(60)
+            setMinutes(25)
+        }
         // discount the first minute when starting the timing
 
         if (seconds === 60 && start) {
@@ -36,7 +42,7 @@ export const Pomy = () => {
 
         // handle and reset the seconds whend it turns zero
 
-        if (seconds === 0) {
+        if (seconds === 0 && start) {
             setseconds(60)
             setseconds((sec) => sec - 1)
             setMinutes((state) => state - 1)
