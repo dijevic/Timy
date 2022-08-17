@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 
 
 // components
@@ -19,21 +19,36 @@ export const Pomy = () => {
     const [start, setstart] = useState(false)
     const [pauseActived, setPauseActived] = useState(false)
     const [seconds, setseconds] = useState(60)
-    const [minutes, setMinutes] = useState(1)
+    const [minutes, setMinutes] = useState(localStorage.getItem('minutes') || 25)
+    const pomodoroCompleted = useRef(false)
 
+
+
+
+    const handlePomodoroCompleted = () => {
+
+        setstart(false)
+        setseconds(60)
+        setMinutes(25)
+        pomodoroCompleted.current = true
+
+
+    }
 
 
 
     // discount minutes or seconds
-    const handleSeconds = () => {
+    const handleTiming = () => {
 
+
+        // verify if the pomodoro is completed
 
         if (seconds === 0 && minutes === 0) {
-            setstart(false)
-            setseconds(60)
-            setMinutes(25)
+            handlePomodoroCompleted()
         }
+
         // discount the first minute when starting the timing
+
 
         if (seconds === 60 && start) {
             setMinutes((state) => state - 1)
@@ -42,10 +57,11 @@ export const Pomy = () => {
 
         // handle and reset the seconds whend it turns zero
 
-        if (seconds === 0 && start) {
+        if (seconds === 0 && !pomodoroCompleted.current) {
             setseconds(60)
             setseconds((sec) => sec - 1)
             setMinutes((state) => state - 1)
+
 
         } else {
 
@@ -76,7 +92,7 @@ export const Pomy = () => {
                     start={start}
                     seconds={seconds}
                     minutes={minutes}
-                    handleSeconds={handleSeconds}
+                    handleTiming={handleTiming}
                     pauseActived={pauseActived}
 
                 />
