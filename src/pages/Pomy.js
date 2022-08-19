@@ -1,12 +1,15 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef, useState } from 'react'
 
 
 // components
 import { ActionButtons } from '../components/pomodoro/ActionButtons'
-// import { Input } from '../components/pomodoro/Input'
+import { ModalSettings } from '../components/pomodoro/ModalSettings'
+import { Input } from '../components/pomodoro/Input'
 import { Navigation } from '../components/pomodoro/Navigation'
 import { PomodoroTitle } from '../components/pomodoro/PomodoroTitle'
 import { Time } from '../components/pomodoro/Time'
+import { timingTypesModes } from '../config/modes'
+import { modeContext } from '../context/mainContext'
 
 // styles
 import styles from '../scss/components/pomodoro.module.scss'
@@ -14,26 +17,35 @@ import styles from '../scss/components/pomodoro.module.scss'
 export const Pomy = () => {
 
 
-
-
     const [start, setstart] = useState(false)
     const [pauseActived, setPauseActived] = useState(false)
-    const [seconds, setseconds] = useState(2)
-    const [minutes, setMinutes] = useState(localStorage.getItem('minutes') || 0)
+    const [reset, setReset] = useState(false)
+
+
+
+    const [seconds, setSeconds] = useState(0)
+    const [minutes, setMinutes] = useState(0)
+
+    const [timingMode, setTimingMode] = useState(timingTypesModes.pomodoro)
+
     const pomodoroCompleted = useRef(false)
 
 
-
+    const [openModal, setOpenModal] = useState(false)
 
     const handlePomodoroCompleted = () => {
 
         setstart(false)
-        setseconds(60)
+        setSeconds(60)
         setMinutes(25)
         pomodoroCompleted.current = true
 
 
     }
+
+
+
+
 
 
 
@@ -55,18 +67,18 @@ export const Pomy = () => {
 
         }
 
-        // handle and reset the seconds whend it turns zero
+        // handle and reset the seconds whend it turns zero but the pomodoro isn't completed
 
         if (seconds === 0 && !pomodoroCompleted.current) {
-            setseconds(60)
-            setseconds((sec) => sec - 1)
+            setSeconds(60)
+            setSeconds((sec) => sec - 1)
             setMinutes((state) => state - 1)
 
 
         } else {
 
             // discount seconds
-            setseconds((sec) => sec - 1)
+            setSeconds((sec) => sec - 1)
 
         }
 
@@ -81,42 +93,63 @@ export const Pomy = () => {
 
 
     return (
-        <div className={styles.mainContainer}>
+        <>
 
-            <div>
-                <PomodoroTitle />
+            < modeContext.Provider value={{ timingMode, setTimingMode }}>
 
-                {/* <Input /> */}
+                <div className={styles.mainContainer}>
 
-                <Time
-                    setstart={setstart}
-                    start={start}
-                    seconds={seconds}
-                    minutes={minutes}
-                    handleTiming={handleTiming}
-                    pauseActived={pauseActived}
-                    setSeconds={setseconds}
-                    setMinutes={setMinutes}
-                    setPauseActived={setPauseActived}
+                    <div>
+                        <PomodoroTitle />
 
 
-                />
+                        <Time
+                            setstart={setstart}
+                            start={start}
+                            seconds={seconds}
+                            minutes={minutes}
+                            pauseActived={pauseActived}
+                            setSeconds={setSeconds}
+                            setMinutes={setMinutes}
+                            setPauseActived={setPauseActived}
+                            handleTiming={handleTiming}
+                            reset={reset}
+                            setReset={setReset}
 
-                <ActionButtons
-                    setstart={setstart}
-                    setSeconds={setseconds}
-                    setMinutes={setMinutes}
-                    start={start}
-                    seconds={seconds}
-                    minutes={minutes}
-                    setPauseActived={setPauseActived}
-                    pauseActived={pauseActived}
 
-                />
+                        />
 
-                <Navigation />
-            </div>
-        </div>
+                        <ActionButtons
+                            setstart={setstart}
+                            setSeconds={setSeconds}
+                            setMinutes={setMinutes}
+                            start={start}
+                            setPauseActived={setPauseActived}
+                            pauseActived={pauseActived}
+                            setReset={setReset}
+
+                        />
+
+                        <Navigation setOpenModal={setOpenModal} />
+                        <Input />
+
+
+                    </div>
+                </div>
+
+
+                {
+                    (openModal) &&
+                    <ModalSettings />
+
+                }
+
+
+
+            </modeContext.Provider>
+
+
+        </>
 
 
 

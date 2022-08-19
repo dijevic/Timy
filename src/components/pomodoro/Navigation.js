@@ -6,7 +6,14 @@ import { HomeIcon } from '../svgs/HomeIcon'
 import styles from '../../scss/components/pomodoro.module.scss'
 import { Link } from 'react-router-dom'
 
-export const Navigation = () => {
+export const Navigation = ({ setOpenModal }) => {
+
+
+    const handleOpenModal = () => {
+
+        setOpenModal(true)
+    }
+
     return (
         <nav className={styles.nav}>
             <ul>
@@ -23,7 +30,9 @@ export const Navigation = () => {
                 </li>
                 <li>
                     <AdjustmentIcon />
-                    <Link to="/settings">Settings</Link>
+                    <span
+                        onClick={handleOpenModal}
+                        to="/settings">Settings</span>
 
 
                 </li>

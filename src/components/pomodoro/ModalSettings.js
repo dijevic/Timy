@@ -1,19 +1,40 @@
 import React from 'react'
+import styles from '../../scss/components/pomodoro.module.scss'
+
 
 export const ModalSettings = () => {
     return (
-        <div>
-            <h2>Settings</h2>
+        <div className={styles.modal}>
+            <div className={styles.modalContainer}>
 
-            <div>
-                <h3>focuse time</h3>
-            </div>
-            <div>
-                <h3>Shor Break</h3>
-            </div>
-            <div>
-                <h3>Long Break</h3>
+                <h2 className={styles.modalTitle}>Settings</h2>
 
+                <div className={styles.settingsOption}>
+                    <h3 className={styles.settingsOptionName}>focuse time</h3>
+
+                    <span className={styles.settingsOptionTime}>
+
+                        <input type="number" min="0" step="1" />
+
+                    </span>
+                </div>
+                <div className={styles.settingsOption}>
+                    <h3 className={styles.settingsOptionName}>Shor Break</h3>
+
+                    <span className={styles.settingsOptionTime}>
+
+                        <input type="number" min="0" step="1" />
+
+                    </span>
+                </div>
+                <div className={styles.settingsOption}>
+                    <h3 className={styles.settingsOptionName}>Long Break</h3>
+                    <span className={styles.settingsOptionTime}>
+
+                        <input type="number" min="0" step="1" />
+                    </span>
+
+                </div>
             </div>
 
         </div>

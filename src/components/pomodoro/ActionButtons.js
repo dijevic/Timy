@@ -1,4 +1,5 @@
 import React from 'react'
+// context
 
 // components
 import { PlayButton } from './PlayButton'
@@ -8,16 +9,16 @@ import { PauseButton } from './PauseButton'
 // styles
 import styles from '../../scss/components/pomodoro.module.scss'
 
-export const ActionButtons = ({ setstart, setSeconds, setMinutes, start, setPauseActived, pauseActived }) => {
+export const ActionButtons = ({ setstart, start, setPauseActived, pauseActived, setReset }) => {
 
     // todo atomizar funcion
+
+
 
     const handleStarTiming = () => {
 
         setstart(true)
         setPauseActived(false)
-
-
 
 
     }
@@ -27,8 +28,7 @@ export const ActionButtons = ({ setstart, setSeconds, setMinutes, start, setPaus
 
         setstart(false)
         setPauseActived(false)
-        setSeconds(60)
-        setMinutes(25)
+        setReset(true)
     }
     const handlePauseTiming = () => {
 
@@ -42,7 +42,8 @@ export const ActionButtons = ({ setstart, setSeconds, setMinutes, start, setPaus
 
 
     return (
-        <div className={styles.actionButtons}>
+        <div
+            className={styles.actionButtons}>
 
 
 

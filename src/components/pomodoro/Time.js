@@ -1,17 +1,31 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useContext } from 'react'
 import { timingTypesModes } from '../../config/modes'
+import { modeContext } from '../../context/mainContext'
 
 
 import styles from '../../scss/components/pomodoro.module.scss'
 import { PomodoroMode } from './PomodoroMode'
 
-export const Time = ({ start, seconds, minutes, handleTiming, pauseActived, setSeconds, setMinutes, setstart, setPauseActived }) => {
+export const Time = ({
+    start,
+    seconds,
+    minutes,
+    pauseActived,
+    setSeconds,
+    setMinutes,
+    setstart,
+    setPauseActived,
+    handleTiming,
+    reset,
+    setReset
+}) => {
 
 
+    const { timingMode } = useContext(modeContext)
     let secondsIntervalRef = useRef()
     const seconsStart = useRef('00')
     const loadingRef = useRef()
-    const [timingMode, setTimingMode] = useState(timingTypesModes.pomodoro)
+
 
 
 
@@ -40,30 +54,58 @@ export const Time = ({ start, seconds, minutes, handleTiming, pauseActived, setS
     }, [start, seconds, handleTiming])
 
 
+
+
+
+
+
+
+
+
+
+
+
     useEffect(() => {
 
-        switch (timingMode) {
-            case timingTypesModes.pomodoro:
-                setSeconds(60)
-                setMinutes(25)
+        const handleModes = (timingMode) => {
 
 
-                break;
-            case timingTypesModes.shortBreaking:
-                setSeconds(60)
-                setMinutes(5)
+            let minutes = ''
 
-                break;
-            case timingTypesModes.longBreaking:
-                setSeconds(60)
-                setMinutes(15)
-                break;
+            switch (timingMode) {
+                case timingTypesModes.pomodoro:
+                    minutes = localStorage.getItem(timingMode) || 25
 
-            default:
-                break;
+
+                    break;
+                case timingTypesModes.shortBreaking:
+                    minutes = localStorage.getItem(timingMode) || 5
+
+                    break;
+                case timingTypesModes.longBreaking:
+                    minutes = localStorage.getItem(timingMode) || 15
+
+
+
+                    break;
+
+                default:
+                    break;
+            }
+
+
+
+            setSeconds(60)
+            setMinutes(minutes)
+            setReset(false)
+
+
         }
 
-    }, [timingMode, setMinutes, setSeconds])
+
+        handleModes(timingMode)
+
+    }, [timingMode, reset, setMinutes, setReset, setSeconds])
 
 
 
@@ -73,11 +115,8 @@ export const Time = ({ start, seconds, minutes, handleTiming, pauseActived, setS
     return (
         <div className={styles.clockContainer}>
             <PomodoroMode
-
                 start={start}
                 setstart={setstart}
-                setTimingMode={setTimingMode}
-                timingMode={timingMode}
                 setPauseActived={setPauseActived}
             />
 
@@ -90,7 +129,7 @@ export const Time = ({ start, seconds, minutes, handleTiming, pauseActived, setS
 
                     {
                         (!start && pauseActived) ? seconds :
-                            (!start && !pauseActived) ? seconsStart.current :
+                            (!start && (pauseActived !== false)) ? seconsStart.current :
                                 (seconds < 60 && seconds >= 10) ? seconds :
                                     (seconds < 10 && seconds > 0) ? `0${seconds}` :
                                         (seconds === 0 || seconds === 60) && seconsStart.current
