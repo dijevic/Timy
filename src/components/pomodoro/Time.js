@@ -5,7 +5,7 @@ import { timingTypesModes } from '../../config/modes'
 import styles from '../../scss/components/pomodoro.module.scss'
 import { PomodoroMode } from './PomodoroMode'
 
-export const Time = ({ start, seconds, minutes, handleTiming, pauseActived, setSeconds, setMinutes, setstart }) => {
+export const Time = ({ start, seconds, minutes, handleTiming, pauseActived, setSeconds, setMinutes, setstart, setPauseActived }) => {
 
 
     let secondsIntervalRef = useRef()
@@ -73,10 +73,13 @@ export const Time = ({ start, seconds, minutes, handleTiming, pauseActived, setS
     return (
         <div className={styles.clockContainer}>
             <PomodoroMode
+
                 start={start}
                 setstart={setstart}
                 setTimingMode={setTimingMode}
-                timingMode={timingMode} />
+                timingMode={timingMode}
+                setPauseActived={setPauseActived}
+            />
 
 
             <div className={styles.clock}>

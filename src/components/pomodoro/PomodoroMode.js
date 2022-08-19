@@ -4,7 +4,7 @@ import { timingTypesModes } from '../../config/modes'
 import styles from '../../scss/components/pomodoro.module.scss'
 
 
-export const PomodoroMode = ({ setTimingMode, timingMode, start, setstart }) => {
+export const PomodoroMode = ({ setTimingMode, timingMode, start, setstart, setPauseActived }) => {
 
     const refButtomPomodoro = useRef()
     const refButtomShortBreak = useRef()
@@ -16,6 +16,7 @@ export const PomodoroMode = ({ setTimingMode, timingMode, start, setstart }) => 
     const handlePomodoroMode = () => {
 
         setTimingMode(timingTypesModes.pomodoro)
+        setPauseActived(false)
         if (start) {
             setstart(false)
         }
@@ -25,6 +26,7 @@ export const PomodoroMode = ({ setTimingMode, timingMode, start, setstart }) => 
     const handleShortBreakMode = () => {
 
         setTimingMode(timingTypesModes.shortBreaking)
+        setPauseActived(false)
         if (start) {
             setstart(false)
         }
@@ -35,6 +37,7 @@ export const PomodoroMode = ({ setTimingMode, timingMode, start, setstart }) => 
     const handleLongBreakMode = () => {
 
         setTimingMode(timingTypesModes.longBreaking)
+        setPauseActived(false)
         if (start) {
             setstart(false)
         }

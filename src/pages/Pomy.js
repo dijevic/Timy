@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react'
 
 // components
 import { ActionButtons } from '../components/pomodoro/ActionButtons'
-import { Input } from '../components/pomodoro/Input'
+// import { Input } from '../components/pomodoro/Input'
 import { Navigation } from '../components/pomodoro/Navigation'
 import { PomodoroTitle } from '../components/pomodoro/PomodoroTitle'
 import { Time } from '../components/pomodoro/Time'
@@ -21,7 +21,6 @@ export const Pomy = () => {
     const [seconds, setseconds] = useState(2)
     const [minutes, setMinutes] = useState(localStorage.getItem('minutes') || 0)
     const pomodoroCompleted = useRef(false)
-
 
 
 
@@ -87,7 +86,7 @@ export const Pomy = () => {
             <div>
                 <PomodoroTitle />
 
-                <Input />
+                {/* <Input /> */}
 
                 <Time
                     setstart={setstart}
@@ -98,6 +97,7 @@ export const Pomy = () => {
                     pauseActived={pauseActived}
                     setSeconds={setseconds}
                     setMinutes={setMinutes}
+                    setPauseActived={setPauseActived}
 
 
                 />
