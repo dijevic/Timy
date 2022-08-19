@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-import { useEffect } from 'react'
 import { timingTypesModes } from '../../config/modes'
 
 import styles from '../../scss/components/pomodoro.module.scss'

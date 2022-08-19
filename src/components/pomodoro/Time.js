@@ -63,7 +63,7 @@ export const Time = ({ start, seconds, minutes, handleTiming, pauseActived, setS
                 break;
         }
 
-    }, [timingMode])
+    }, [timingMode, setMinutes, setSeconds])
 
 
 
