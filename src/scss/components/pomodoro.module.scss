@@ -21,7 +21,7 @@
     max-width: 500px;
     border-radius: 20px;
     border: vars.$purple 3px solid;
-    margin: 60px auto;
+    margin: 20px auto;
     padding-left: 10px;
     background: vars.$purple;
     display: flex;
@@ -50,6 +50,8 @@
     align-items: center;
     width:100%;
     margin-top:50px;
+    flex-direction: column;
+
 
 
     .clock{
@@ -99,11 +101,40 @@
     }
 }
 
+.pomodoroModeContainer{
+    padding: 20px;
+    background: vars.$black2;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    column-gap: 20px;
+
+
+    .pomodoroModeButton{
+
+        font-size:1.2rem;
+        line-height: 1.2rem;
+        background:none;
+        color: vars.$white;
+        cursor: pointer;
+        padding:10px 15px;
+        border-radius: 5px;
+        transition:.5s ease all;
+    
+    }
+
+    .actived{
+        background:vars.$purple;
+
+    }
+
+}
+
 .actionButtons{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top:40px;
+    margin-top:30px;
     column-gap: 25px;;
 
     .actionButton{

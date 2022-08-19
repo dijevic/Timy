@@ -23,7 +23,7 @@ export const Navigation = () => {
                 </li>
                 <li>
                     <AdjustmentIcon />
-                    <Link to="/">Settings</Link>
+                    <Link to="/settings">Settings</Link>
 
 
                 </li>

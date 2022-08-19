@@ -18,9 +18,10 @@ export const Pomy = () => {
 
     const [start, setstart] = useState(false)
     const [pauseActived, setPauseActived] = useState(false)
-    const [seconds, setseconds] = useState(60)
-    const [minutes, setMinutes] = useState(localStorage.getItem('minutes') || 25)
+    const [seconds, setseconds] = useState(2)
+    const [minutes, setMinutes] = useState(localStorage.getItem('minutes') || 0)
     const pomodoroCompleted = useRef(false)
+
 
 
 
@@ -89,11 +90,15 @@ export const Pomy = () => {
                 <Input />
 
                 <Time
+                    setstart={setstart}
                     start={start}
                     seconds={seconds}
                     minutes={minutes}
                     handleTiming={handleTiming}
                     pauseActived={pauseActived}
+                    setSeconds={setseconds}
+                    setMinutes={setMinutes}
+
 
                 />
 

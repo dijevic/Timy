@@ -1,13 +1,17 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
+import { timingTypesModes } from '../../config/modes'
+
 
 import styles from '../../scss/components/pomodoro.module.scss'
+import { PomodoroMode } from './PomodoroMode'
 
-export const Time = ({ start, seconds, minutes, handleSeconds, pauseActived }) => {
+export const Time = ({ start, seconds, minutes, handleTiming, pauseActived, setSeconds, setMinutes, setstart }) => {
 
 
     let secondsIntervalRef = useRef()
     const seconsStart = useRef('00')
     const loadingRef = useRef()
+    const [timingMode, setTimingMode] = useState(timingTypesModes.pomodoro)
 
 
 
@@ -19,7 +23,7 @@ export const Time = ({ start, seconds, minutes, handleSeconds, pauseActived }) =
             window.clearTimeout(secondsIntervalRef.current)
 
             secondsIntervalRef.current = setTimeout(() => {
-                handleSeconds()
+                handleTiming()
 
             }, 1000);
 
@@ -33,17 +37,34 @@ export const Time = ({ start, seconds, minutes, handleSeconds, pauseActived }) =
         }
 
 
-    }, [start, seconds, handleSeconds])
-
+    }, [start, seconds, handleTiming])
 
 
     useEffect(() => {
-        if (start) {
-            loadingRef.current.style.animationDuration = `${minutes * 60}s`
-        } else {
-            loadingRef.current.style.animationDuration = ``
+
+        switch (timingMode) {
+            case timingTypesModes.pomodoro:
+                setSeconds(60)
+                setMinutes(25)
+
+
+                break;
+            case timingTypesModes.shortBreaking:
+                setSeconds(60)
+                setMinutes(5)
+
+                break;
+            case timingTypesModes.longBreaking:
+                setSeconds(60)
+                setMinutes(15)
+                break;
+
+            default:
+                break;
         }
-    }, [start, minutes])
+
+    }, [timingMode])
+
 
 
 
@@ -51,8 +72,16 @@ export const Time = ({ start, seconds, minutes, handleSeconds, pauseActived }) =
 
     return (
         <div className={styles.clockContainer}>
+            <PomodoroMode
+                start={start}
+                setstart={setstart}
+                setTimingMode={setTimingMode}
+                timingMode={timingMode} />
+
 
             <div className={styles.clock}>
+
+
                 <span className={styles.clockTime}>
                     {minutes} :
 
@@ -68,12 +97,17 @@ export const Time = ({ start, seconds, minutes, handleSeconds, pauseActived }) =
 
                 </span>
 
+
+
+
                 <span
                     ref={loadingRef}
                     className={styles.clockLoading}>
 
                 </span>
             </div>
+
+
         </div>
     )
 }
