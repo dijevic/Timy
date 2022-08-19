@@ -23,7 +23,7 @@ export const Time = ({
 
     const { timingMode } = useContext(modeContext)
     let secondsIntervalRef = useRef()
-    const seconsStart = useRef('00')
+    const secondsStart = useRef('00')
     const loadingRef = useRef()
 
 
@@ -129,10 +129,10 @@ export const Time = ({
 
                     {
                         (!start && pauseActived) ? seconds :
-                            (!start && (pauseActived !== false)) ? seconsStart.current :
+                            (!start && (pauseActived !== false)) ? secondsStart.current :
                                 (seconds < 60 && seconds >= 10) ? seconds :
                                     (seconds < 10 && seconds > 0) ? `0${seconds}` :
-                                        (seconds === 0 || seconds === 60) && seconsStart.current
+                                        (seconds === 0 || seconds === 60) && secondsStart.current
                     }
 
 

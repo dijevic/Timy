@@ -83,9 +83,6 @@ export const Pomy = () => {
         }
 
 
-
-
-
     }
 
 

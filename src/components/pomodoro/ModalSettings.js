@@ -35,6 +35,11 @@ export const ModalSettings = () => {
                     </span>
 
                 </div>
+
+                <div>
+                    <button className={styles.ModalSettingsButton}>Save</button>
+                    <button className={styles.ModalSettingsButton}>Close</button>
+                </div>
             </div>
 
         </div>
