@@ -108,7 +108,7 @@ export const Time = ({
 
         handleModes(timingMode)
 
-    }, [timingMode, reset, setMinutes, setReset, setSeconds])
+    }, [timingMode, reset, setMinutes, setReset, setSeconds, setstart, setPauseActived])
 
 
 
