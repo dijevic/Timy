@@ -231,8 +231,6 @@
 
             svg{
                 stroke: vars.$purple;
-                width: 25px;
-                height: 25px;
                 margin-bottom: 10px;
             }
 
@@ -336,6 +334,11 @@
     }
 
 
+
+    
+}
+@media screen and (min-width: 968px) {
+
     .nav{
         margin-left: 0;
         width: 15%;
@@ -348,6 +351,7 @@
 .barsIcon ,.closeIcon{
     display:none;
 }
+
     
 }
 

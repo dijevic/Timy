@@ -63,9 +63,6 @@ export const Time = ({
 
 
 
-
-
-
     useEffect(() => {
 
         const handleModes = (timingMode) => {
