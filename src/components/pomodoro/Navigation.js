@@ -62,11 +62,17 @@ export const Navigation = ({ setOpenModal, navigationRef }) => {
             </ul>
 
 
+
+
+
             <span
                 onClick={handleCloseNavigation}
                 className={styles.closeIcon}>
                 <CloseIcon />
             </span>
+
+
+            <h2 className={styles.appName}>Pomy</h2>
         </nav>
     )
 }

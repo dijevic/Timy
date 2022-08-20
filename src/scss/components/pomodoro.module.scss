@@ -242,6 +242,26 @@
             }
         }
     }
+
+    .appName{
+        position: absolute;
+        bottom:110px;
+        color:vars.$purple;
+        text-shadow: 1px 1px 0px #00CECB ,
+        2px 2px 0px #fff ,
+        3px 3px 0px vars.$purple2 ,
+        4px 4px 0px vars.$purple2 ,
+        5px 5px 0px vars.$purple2 ,
+         6px 6px 0px vars.$purple2 ,
+         7px 7px 0px vars.$purple ,
+      
+        8px 8px 16px rgba($color: #000000, $alpha: 0.5);
+        font-size:5rem;
+        line-height:5rem;
+        font-weight: bold;
+        font-family: 'Square Peg';
+        transform: skew(-5deg ,-5deg)  rotate(5deg);
+    }
 }
 
 .navOpen{
