@@ -13,6 +13,7 @@ import { modeContext } from '../context/mainContext'
 
 // styles
 import styles from '../scss/components/pomodoro.module.scss'
+import { Bars } from '../components/svgs/Bars'
 
 export const Pomy = () => {
 
@@ -22,6 +23,7 @@ export const Pomy = () => {
     const [reset, setReset] = useState(false)
 
 
+    const navRef = useRef()
 
     const [seconds, setSeconds] = useState(0)
     const [minutes, setMinutes] = useState(0)
@@ -85,6 +87,11 @@ export const Pomy = () => {
 
     }
 
+    const handleOpenNavigation = () => {
+        navRef.current(true)
+
+    }
+
 
 
 
@@ -95,6 +102,13 @@ export const Pomy = () => {
             < modeContext.Provider value={{ timingMode, setTimingMode }}>
 
                 <div className={styles.mainContainer}>
+
+
+                    <span
+                        onClick={handleOpenNavigation}
+                        className={styles.barsIcon}>
+                        <Bars />
+                    </span>
 
                     <div>
                         <PomodoroTitle />
@@ -127,7 +141,9 @@ export const Pomy = () => {
 
                         />
 
-                        <Navigation setOpenModal={setOpenModal} />
+
+                        <Navigation setOpenModal={setOpenModal} navigationRef={navRef} />
+
                         <Input />
 
 

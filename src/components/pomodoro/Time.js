@@ -22,6 +22,7 @@ export const Time = ({
 
 
     const { timingMode } = useContext(modeContext)
+
     let secondsIntervalRef = useRef()
     const secondsStart = useRef('00')
     const loadingRef = useRef()
@@ -98,6 +99,8 @@ export const Time = ({
             setSeconds(60)
             setMinutes(minutes)
             setReset(false)
+            setstart(false)
+            setPauseActived(false)
 
 
         }
@@ -114,12 +117,7 @@ export const Time = ({
 
     return (
         <div className={styles.clockContainer}>
-            <PomodoroMode
-                start={start}
-                setstart={setstart}
-                setPauseActived={setPauseActived}
-            />
-
+            <PomodoroMode />
 
             <div className={styles.clock}>
 
@@ -129,7 +127,7 @@ export const Time = ({
 
                     {
                         (!start && pauseActived) ? seconds :
-                            (!start && (pauseActived !== false)) ? secondsStart.current :
+                            (!start && pauseActived) ? secondsStart.current :
                                 (seconds < 60 && seconds >= 10) ? seconds :
                                     (seconds < 10 && seconds > 0) ? `0${seconds}` :
                                         (seconds === 0 || seconds === 60) && secondsStart.current

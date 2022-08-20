@@ -5,7 +5,7 @@ import { modeContext } from '../../context/mainContext'
 import styles from '../../scss/components/pomodoro.module.scss'
 
 
-export const PomodoroMode = ({ start, setstart, setPauseActived }) => {
+export const PomodoroMode = () => {
 
     const { timingMode, setTimingMode } = useContext(modeContext)
 
@@ -19,20 +19,13 @@ export const PomodoroMode = ({ start, setstart, setPauseActived }) => {
     const handlePomodoroMode = () => {
 
         setTimingMode(timingTypesModes.pomodoro)
-        setPauseActived(false)
-        if (start) {
-            setstart(false)
-        }
+
 
     }
 
     const handleShortBreakMode = () => {
 
         setTimingMode(timingTypesModes.shortBreaking)
-        setPauseActived(false)
-        if (start) {
-            setstart(false)
-        }
 
 
     }
@@ -40,10 +33,6 @@ export const PomodoroMode = ({ start, setstart, setPauseActived }) => {
     const handleLongBreakMode = () => {
 
         setTimingMode(timingTypesModes.longBreaking)
-        setPauseActived(false)
-        if (start) {
-            setstart(false)
-        }
 
 
     }

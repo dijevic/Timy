@@ -13,9 +13,9 @@
     color: vars.$white;
     text-align: center;
     font-weight: 700;
-    margin: 30px auto 0px auto;
+    margin: 50px auto 0px auto;
     border-bottom:2px solid vars.$purple;
-    padding:5px;
+    padding-bottom:20px;
     width: max-content;
 }
 
@@ -44,6 +44,22 @@
     }
 }
 
+
+.barsIcon{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    svg{
+        stroke: vars.$white;
+    }
+}
+
+.closeIcon {
+    @extend .barsIcon ;
+    top:20px;
+    
+
+}
 
 
 .clockContainer{
@@ -113,7 +129,10 @@
     border-radius: 10px;
     display: flex;
     column-gap: 20px;
-
+    justify-content: center;
+    flex-wrap: wrap;
+    box-shadow:2px 2px 7px vars.$purple ;
+    border: 2px solid vars.$purple;
 
     .pomodoroModeButton{
 
@@ -177,7 +196,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: -100%;
+    z-index: 1000;
+    transition:0.5s ease all;
+    transform: translateX(-100%);
 
     ul{
         display: flex;
@@ -204,16 +225,29 @@
                 font-weight: 600;
                 font-size:1rem;
                 line-height:1rem;
-                color:vars.$white
+                color:vars.$white;
+           
             }
 
             svg{
-                stroke: rgba($color: vars.$white, $alpha: 0.5);
+                stroke: vars.$purple;
                 width: 25px;
                 height: 25px;
+                margin-bottom: 10px;
+            }
+
+            .navItem{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
             }
         }
     }
+}
+
+.navOpen{
+    transform: translateX(0);
 }
 
 
@@ -306,7 +340,14 @@
         margin-left: 0;
         width: 15%;
         padding: 10px 20px;
+        transform:translateX(0);
+        border-right:4px solid vars.$purple2;
+        ;
     }
+
+.barsIcon ,.closeIcon{
+    display:none;
+}
     
 }
 
@@ -318,6 +359,10 @@
 @keyframes rotate{
 0%{transform: rotateY(-20deg);}
 100%{transform: rotateY(20deg);}
+}
+@keyframes openNav{
+0%{transform: translateX(-100%);}
+100%{transform: translateX(0);}
 }
 @keyframes clockLoading{
 0%{height: 0%;}
