@@ -17,6 +17,9 @@
     border-bottom:2px solid vars.$purple;
     padding-bottom:20px;
     width: max-content;
+    animation-name: fadeInUp, opacity;
+    animation-iteration-count: initial;
+    animation-duration: .3s;
 }
 
 .inputContainer{
@@ -29,6 +32,9 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    animation-name: fadeInUp, opacity;
+    animation-iteration-count: initial;
+    animation-duration: .5s;
     input{
         width: 90%;
         padding: 15px;
@@ -69,6 +75,7 @@
     width:100%;
     margin-top:50px;
     flex-direction: column;
+    
 
 
 
@@ -91,10 +98,9 @@
     border: 2px solid vars.$purple2;
 
         
-       
-     
-       
-
+    animation-name: fadeInUp, opacity;
+    animation-iteration-count: initial;
+    animation-duration: .7s;
 
         .clockTime{
             font-size:3rem;
@@ -133,6 +139,9 @@
     flex-wrap: wrap;
     box-shadow:2px 2px 7px vars.$purple ;
     border: 2px solid vars.$purple;
+    animation-name: fadeInUp, opacity;
+    animation-iteration-count: initial;
+    animation-duration: .9s;
 
     .pomodoroModeButton{
 
@@ -162,6 +171,9 @@
     justify-content: center;
     margin-top:30px;
     column-gap: 25px;;
+    animation-name: fadeInUp, opacity;
+    animation-iteration-count: initial;
+    animation-duration: 1s;
 
     .actionButton{
         background:vars.$purple2;
@@ -241,6 +253,9 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                animation-name: fadeInLeft, opacity;
+                animation-iteration-count: initial;
+                animation-duration: .5s;
             }
         }
     }
@@ -263,6 +278,9 @@
         font-weight: bold;
         font-family: 'Square Peg';
         transform: skew(-5deg ,-5deg)  rotate(5deg);
+        animation-name: grow, opacity;
+        animation-iteration-count: initial;
+        animation-duration: .5s;
     }
 }
 
@@ -495,5 +513,16 @@
 @keyframes opacity{
 0%{opacity: 0%;}
 100%{opacity: 100%;}
+}
+
+@keyframes fadeInUp {
+    0%{transform:translateY(100px)};
+    100%{transform:translateY(0)};
+    
+}
+@keyframes fadeInLeft {
+    0%{transform:translateX(-100%)};
+    100%{transform:translateX(0)};
+    
 }
 

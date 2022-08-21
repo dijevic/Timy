@@ -53,7 +53,7 @@ export const ModalSettings = ({ openModal, handleChangeSettings }) => {
                             name={timingTypesModes.pomodoro}
                             className={styles.inputNumber}
                             type="number"
-                            min="0"
+                            min="1"
                             step="1"
                             value={pomodoro}
                             onChange={handleInputChange}
@@ -70,7 +70,7 @@ export const ModalSettings = ({ openModal, handleChangeSettings }) => {
                             name={timingTypesModes.shortBreaking}
                             className={styles.inputNumber}
                             type="number"
-                            min="0"
+                            min="1"
                             step="1"
                             value={shortBreaking}
                             onChange={handleInputChange}
@@ -86,7 +86,7 @@ export const ModalSettings = ({ openModal, handleChangeSettings }) => {
                             name={timingTypesModes.longBreaking}
                             className={styles.inputNumber}
                             type="number"
-                            min="0"
+                            min="1"
                             step="1"
                             value={longBreaking}
                             onChange={handleInputChange}
