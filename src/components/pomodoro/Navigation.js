@@ -7,7 +7,7 @@ import styles from '../../scss/components/pomodoro.module.scss'
 import { Link } from 'react-router-dom'
 import { CloseIcon } from '../svgs/CloseIcon'
 
-export const Navigation = ({ setOpenModal, navigationRef }) => {
+export const Navigation = ({ openModal, navigationRef }) => {
 
 
     const [open, setOpen] = useState(false)
@@ -15,7 +15,7 @@ export const Navigation = ({ setOpenModal, navigationRef }) => {
 
     const handleOpenModal = () => {
 
-        setOpenModal(true)
+        openModal()
     }
 
     navigationRef.current = setOpen

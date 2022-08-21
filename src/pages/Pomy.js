@@ -1,5 +1,9 @@
 import React, { useRef, useState } from 'react'
 
+// context
+import { modeContext } from '../context/mainContext'
+
+
 
 // components
 import { ActionButtons } from '../components/pomodoro/ActionButtons'
@@ -8,12 +12,13 @@ import { Input } from '../components/pomodoro/Input'
 import { Navigation } from '../components/pomodoro/Navigation'
 import { PomodoroTitle } from '../components/pomodoro/PomodoroTitle'
 import { Time } from '../components/pomodoro/Time'
+import { Bars } from '../components/svgs/Bars'
+
+// modes
 import { timingTypesModes } from '../config/modes'
-import { modeContext } from '../context/mainContext'
 
 // styles
 import styles from '../scss/components/pomodoro.module.scss'
-import { Bars } from '../components/svgs/Bars'
 
 export const Pomy = () => {
 
@@ -45,8 +50,9 @@ export const Pomy = () => {
 
     }
 
-
-
+    const handleOpenModal = () => {
+        setOpenModal(state => !state)
+    }
 
 
 
@@ -97,72 +103,74 @@ export const Pomy = () => {
 
 
     return (
-        <>
-
-            < modeContext.Provider value={{ timingMode, setTimingMode }}>
-
-                <div className={styles.mainContainer}>
 
 
-                    <span
-                        onClick={handleOpenNavigation}
-                        className={styles.barsIcon}>
-                        <Bars />
-                    </span>
-
-                    <div>
-                        <PomodoroTitle />
+        < modeContext.Provider value={{ timingMode, setTimingMode }}>
 
 
-                        <Time
-                            setstart={setstart}
-                            start={start}
-                            seconds={seconds}
-                            minutes={minutes}
-                            pauseActived={pauseActived}
-                            setSeconds={setSeconds}
-                            setMinutes={setMinutes}
-                            setPauseActived={setPauseActived}
-                            handleTiming={handleTiming}
-                            reset={reset}
-                            setReset={setReset}
+            {
+                (openModal) &&
+                <ModalSettings openModal={handleOpenModal} />
+
+            }
+
+            <div className={styles.mainContainer}>
 
 
-                        />
+                <span
+                    onClick={handleOpenNavigation}
+                    className={styles.barsIcon}>
+                    <Bars />
+                </span>
 
-                        <ActionButtons
-                            setstart={setstart}
-                            setSeconds={setSeconds}
-                            setMinutes={setMinutes}
-                            start={start}
-                            setPauseActived={setPauseActived}
-                            pauseActived={pauseActived}
-                            setReset={setReset}
-
-                        />
+                <div>
+                    <PomodoroTitle />
 
 
-                        <Navigation setOpenModal={setOpenModal} navigationRef={navRef} />
+                    <Time
+                        setstart={setstart}
+                        start={start}
+                        seconds={seconds}
+                        minutes={minutes}
+                        pauseActived={pauseActived}
+                        setSeconds={setSeconds}
+                        setMinutes={setMinutes}
+                        setPauseActived={setPauseActived}
+                        handleTiming={handleTiming}
+                        reset={reset}
+                        setReset={setReset}
 
-                        <Input />
+
+                    />
+
+                    <ActionButtons
+                        setstart={setstart}
+                        setSeconds={setSeconds}
+                        setMinutes={setMinutes}
+                        start={start}
+                        setPauseActived={setPauseActived}
+                        pauseActived={pauseActived}
+                        setReset={setReset}
+
+                    />
 
 
-                    </div>
+                    <Navigation openModal={handleOpenModal} navigationRef={navRef} />
+
+                    <Input />
+
+
                 </div>
-
-
-                {
-                    (openModal) &&
-                    <ModalSettings />
-
-                }
+            </div>
 
 
 
-            </modeContext.Provider>
 
 
-        </>
+
+        </modeContext.Provider>
+
+
 
 
 

@@ -271,7 +271,7 @@
 
 .modal {
 
-    position:absolute;
+    position:fixed;
     top: 0;
     display: flex;
     align-items:center;
@@ -285,12 +285,12 @@
 
 
     .modalContainer{
-        background:rgba($color: vars.$black2, $alpha: 0.5);
+        background:rgba($color: vars.$black2, $alpha: 1);
         max-width: 500px;
         width: 100%;
         display: flex;
         align-items:center;
-        justify-content:center;
+        justify-content:flex-start;
         flex-direction:column;
         padding: 20px;
         border-radius: 10px;
@@ -299,37 +299,106 @@
         animation-name:grow , opacity;
         animation-duration:.6s;
         animation-iteration-count: initial;
+        min-height: 80vh;
         
 
         .modalTitle{
             color:vars.$white;
-            font-size:1.4rem;
-            line-height: 1.4rem;
+            font-size:1.8rem;
+            line-height: 1.8rem;
+            font-weight: 600;
+            margin-top:20px;
+            border-bottom: 2px solid vars.$purple2;
+            margin-bottom: 40px;
+            padding-bottom:10px;
             
         }
 
         .settingsOption{
             width:100%;
-            margin-top: 20px;
+            margin-top: 30px;
             border-radius: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: vars.$purple2;
+        // background:rgba($color: vars.$black2, $alpha: 1);
+
+
 
             .settingsOptionName{
                 font-size: 1.2rem;
                 line-height: 1.2rem;
                 color:vars.$white;
-                background: vars.$black2;
                 padding: 20px;
                 border-radius: 40px;
              
             }
 
+          
         
         }
+
+        .settingsOptionTime{
+            max-width: 100px;
+            display:flex;
+            margin-right: 10px;
+            overflow: hidden;
+            height: 40px;
+            border-radius: 10px;
+            padding: 5px;
+      
+        }
+  
+
+        .ModalSettingsButtonsContainer{
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            justify-content:center;
+            column-gap: 25px;
+
+         .ModalSettingsButtonSave{
+            background: vars.$purple2;
+            color:vars.$white;
+         }
+
+            .ModalSettingsButton{
+                padding: 10px 20px;
+                font-size:1.4rem;
+                line-height: 1.4rem;;
+                border-radius:5px
+            }
+        }
+
     }
 
+
+    .inputNumber{
+        width: 100%;
+        background-color:vars.$white;
+       padding: 10px;
+       outline:none;
+       color:vars.$black;
+       font-size: 1rem;
+       border-radius:5px
+   
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+.inputNumber::-webkit-outer-spin-button,
+.inputNumber::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.inputNumber[type=number] {
+  -moz-appearance: textfield;
+}
+
+    
 
 }
 

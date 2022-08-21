@@ -2,7 +2,11 @@ import React from 'react'
 import styles from '../../scss/components/pomodoro.module.scss'
 
 
-export const ModalSettings = () => {
+export const ModalSettings = ({ openModal }) => {
+
+    const handleCloseModal = () => {
+        openModal()
+    }
     return (
         <div className={styles.modal}>
             <div className={styles.modalContainer}>
@@ -14,16 +18,16 @@ export const ModalSettings = () => {
 
                     <span className={styles.settingsOptionTime}>
 
-                        <input type="number" min="0" step="1" />
+                        <input className={styles.inputNumber} type="number" min="0" step="1" />
 
                     </span>
                 </div>
                 <div className={styles.settingsOption}>
-                    <h3 className={styles.settingsOptionName}>Shor Break</h3>
+                    <h3 className={styles.settingsOptionName}>Short Break</h3>
 
                     <span className={styles.settingsOptionTime}>
 
-                        <input type="number" min="0" step="1" />
+                        <input className={styles.inputNumber} type="number" min="0" step="1" />
 
                     </span>
                 </div>
@@ -31,14 +35,18 @@ export const ModalSettings = () => {
                     <h3 className={styles.settingsOptionName}>Long Break</h3>
                     <span className={styles.settingsOptionTime}>
 
-                        <input type="number" min="0" step="1" />
+                        <input className={styles.inputNumber} type="number" min="0" step="1" />
                     </span>
 
                 </div>
 
-                <div>
-                    <button className={styles.ModalSettingsButton}>Save</button>
-                    <button className={styles.ModalSettingsButton}>Close</button>
+                <div className={styles.ModalSettingsButtonsContainer}>
+                    <button
+
+                        className={`${styles.ModalSettingsButton} ${styles.ModalSettingsButtonSave}`}>Save</button>
+                    <button
+                        onClick={handleCloseModal}
+                        className={`${styles.ModalSettingsButton} ${styles.ModalSettingsButtonClose}`}>Close</button>
                 </div>
             </div>
 
