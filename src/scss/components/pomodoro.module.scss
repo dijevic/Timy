@@ -285,7 +285,7 @@
 
 
     .modalContainer{
-        background:rgba($color: vars.$black2, $alpha: 1);
+        background: vars.$darkBlue;
         max-width: 500px;
         width: 100%;
         display: flex;
@@ -312,6 +312,15 @@
             margin-bottom: 40px;
             padding-bottom:10px;
             
+        }
+
+        .SettingTypeName{
+            font-size:1.4rem;
+            line-height:1.4rem;
+            color:vars.$white;
+            text-align: left;
+            width: 100%;
+            padding-left: 20px;
         }
 
         .settingsOption{

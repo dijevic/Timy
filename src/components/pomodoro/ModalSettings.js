@@ -7,11 +7,15 @@ export const ModalSettings = ({ openModal }) => {
     const handleCloseModal = () => {
         openModal()
     }
+
+
+
     return (
         <div className={styles.modal}>
             <div className={styles.modalContainer}>
 
                 <h2 className={styles.modalTitle}>Settings</h2>
+                <p className={styles.SettingTypeName}>Time (minutes)</p>
 
                 <div className={styles.settingsOption}>
                     <h3 className={styles.settingsOptionName}>focuse time</h3>

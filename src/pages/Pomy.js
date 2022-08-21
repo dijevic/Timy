@@ -27,11 +27,11 @@ export const Pomy = () => {
     const [pauseActived, setPauseActived] = useState(false)
     const [reset, setReset] = useState(false)
 
-
-    const navRef = useRef()
-
     const [seconds, setSeconds] = useState(0)
     const [minutes, setMinutes] = useState(0)
+
+
+    const navRef = useRef()
 
     const [timingMode, setTimingMode] = useState(timingTypesModes.pomodoro)
 
@@ -43,8 +43,7 @@ export const Pomy = () => {
     const handlePomodoroCompleted = () => {
 
         setstart(false)
-        setSeconds(60)
-        setMinutes(25)
+        setReset(true)
         pomodoroCompleted.current = true
 
 
