@@ -26,6 +26,7 @@ export const Pomy = () => {
     const [start, setstart] = useState(false)
     const [pauseActived, setPauseActived] = useState(false)
     const [reset, setReset] = useState(false)
+    const [settings, setSettings] = useState(false)
 
     const [seconds, setSeconds] = useState(0)
     const [minutes, setMinutes] = useState(0)
@@ -39,6 +40,11 @@ export const Pomy = () => {
 
 
     const [openModal, setOpenModal] = useState(false)
+
+    const handleChangeSettings = () => {
+
+        setSettings(state => !state)
+    }
 
     const handlePomodoroCompleted = () => {
 
@@ -109,7 +115,7 @@ export const Pomy = () => {
 
             {
                 (openModal) &&
-                <ModalSettings openModal={handleOpenModal} />
+                <ModalSettings handleChangeSettings={handleChangeSettings} openModal={handleOpenModal} />
 
             }
 
@@ -138,6 +144,7 @@ export const Pomy = () => {
                         handleTiming={handleTiming}
                         reset={reset}
                         setReset={setReset}
+                        settings={settings}
 
 
                     />

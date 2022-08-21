@@ -17,7 +17,8 @@ export const Time = ({
     setPauseActived,
     handleTiming,
     reset,
-    setReset
+    setReset,
+    settings
 }) => {
 
 
@@ -101,7 +102,7 @@ export const Time = ({
 
         handleModes(timingMode)
 
-    }, [timingMode, reset, setMinutes, setReset, setSeconds, setstart, setPauseActived])
+    }, [timingMode, reset, setMinutes, setReset, setSeconds, setstart, setPauseActived, settings])
 
 
 

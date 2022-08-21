@@ -144,6 +144,8 @@
         padding:10px 15px;
         border-radius: 5px;
         transition:.5s ease all;
+        white-space:nowrap;
+     
     
     }
 
@@ -276,7 +278,7 @@
     display: flex;
     align-items:center;
     justify-content:center;
-    background: rgba($color: vars.$black2, $alpha: 0.8);
+    background: rgba($color: vars.$black2, $alpha: 0.5);
     width: 100%;
     min-height: 100vh;
     z-index: 20000;
@@ -332,7 +334,7 @@
             justify-content: space-between;
             align-items: center;
             background: vars.$black2;
-            box-shadow: 5px 5px 7px rgba($color: #000000, $alpha: 0.2);
+                box-shadow: 5px 5px 7px rgba($color: #000000, $alpha: 0.2);
 
 
 
@@ -358,7 +360,6 @@
             height: 40px;
             border-radius: 10px;
             padding: 5px;
-            box-shadow: 5px 5px 7px rgba($color: #000000, $alpha: 0.1);
 
       
         }
@@ -495,3 +496,4 @@
 0%{opacity: 0%;}
 100%{opacity: 100%;}
 }
+
