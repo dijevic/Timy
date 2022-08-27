@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 // context
 
 // components
@@ -8,17 +8,19 @@ import { PauseButton } from './PauseButton'
 
 // styles
 import styles from '../../scss/components/pomodoro.module.scss'
+import { modeContext } from '../../context/mainContext'
+import { timingStateMode } from '../../config/modes'
 
-export const ActionButtons = ({ setstart, start, setPauseActived, pauseActived, setReset }) => {
+export const ActionButtons = () => {
 
     // todo atomizar funcion
 
-
+    const { setTimingState, timingState } = useContext(modeContext)
 
     const handleStarTiming = () => {
 
-        setstart(true)
-        setPauseActived(false)
+
+        setTimingState(timingStateMode.started)
 
 
     }
@@ -26,14 +28,13 @@ export const ActionButtons = ({ setstart, start, setPauseActived, pauseActived, 
     const handleStopTiming = () => {
 
 
-        setstart(false)
-        setPauseActived(false)
-        setReset(true)
+        setTimingState(timingStateMode.unActived)
+
     }
     const handlePauseTiming = () => {
 
-        setstart((state) => !state)
-        setPauseActived(true)
+        setTimingState(timingStateMode.paused)
+
 
     }
 
@@ -50,13 +51,13 @@ export const ActionButtons = ({ setstart, start, setPauseActived, pauseActived, 
 
             {
 
-                (start && !pauseActived) ?
+                (timingState === timingStateMode.started) ?
 
                     <>
                         <PauseButton showStopButton={handlePauseTiming} />
                         <StopButton stopTiming={handleStopTiming} />
                     </> :
-                    (!start && pauseActived) ?
+                    (timingState === timingStateMode.paused) ?
 
                         <>
                             <PlayButton showStopButton={handleStarTiming} />
@@ -66,7 +67,7 @@ export const ActionButtons = ({ setstart, start, setPauseActived, pauseActived, 
                         </>
 
                         :
-                        (!start && !pauseActived)
+                        (timingState === timingStateMode.unActived)
                         &&
                         <PlayButton showStopButton={handleStarTiming} />
 

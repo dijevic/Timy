@@ -4,8 +4,10 @@ export const timingTypesModes = {
     longBreaking: 'longBreaking'
 }
 
-export const playingMode = {
-    playing: 'play',
-    stop: 'stop',
-    pause: 'pause'
+export const timingStateMode = {
+    started: 'playing',
+    unActived: 'unActived',
+    paused: 'paused',
+    updating: 'updating',
+
 }

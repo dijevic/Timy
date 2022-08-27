@@ -15,7 +15,7 @@ import { Time } from '../components/pomodoro/Time'
 import { Bars } from '../components/svgs/Bars'
 
 // modes
-import { timingTypesModes } from '../config/modes'
+import { timingTypesModes, timingStateMode } from '../config/modes'
 
 // styles
 import styles from '../scss/components/pomodoro.module.scss'
@@ -28,15 +28,17 @@ export const Pomy = () => {
     const [reset, setReset] = useState(false)
     const [settings, setSettings] = useState(false)
 
+    const [timingState, setTimingState] = useState(timingStateMode.unActived)
+
     const [seconds, setSeconds] = useState(0)
     const [minutes, setMinutes] = useState(0)
+
 
 
     const navRef = useRef()
 
     const [timingMode, setTimingMode] = useState(timingTypesModes.pomodoro)
 
-    const pomodoroCompleted = useRef(false)
 
 
     const [openModal, setOpenModal] = useState(false)
@@ -46,11 +48,30 @@ export const Pomy = () => {
         setSettings(state => !state)
     }
 
-    const handlePomodoroCompleted = () => {
+    const handleTimingCompleted = () => {
 
         setstart(false)
         setReset(true)
-        pomodoroCompleted.current = true
+
+        switch (timingMode) {
+            case timingTypesModes.shortBreaking:
+                setTimingMode(timingTypesModes.pomodoro)
+
+
+                break;
+            case timingTypesModes.pomodoro:
+                setTimingMode(timingTypesModes.shortBreaking)
+
+                break;
+            case timingTypesModes.longBreaking:
+                setTimingMode(timingTypesModes.pomodoro)
+
+
+                break;
+
+            default:
+                break;
+        }
 
 
     }
@@ -69,20 +90,21 @@ export const Pomy = () => {
         // verify if the pomodoro is completed
 
         if (seconds === 0 && minutes === 0) {
-            handlePomodoroCompleted()
+            handleTimingCompleted()
+            return
         }
 
         // discount the first minute when starting the timing
 
 
-        if (seconds === 60 && start) {
+        if (seconds === 60 && timingState === timingStateMode.started) {
             setMinutes((state) => state - 1)
 
         }
 
         // handle and reset the seconds whend it turns zero but the pomodoro isn't completed
 
-        if (seconds === 0 && !pomodoroCompleted.current) {
+        if (seconds === 0) {
             setSeconds(60)
             setSeconds((sec) => sec - 1)
             setMinutes((state) => state - 1)
@@ -110,7 +132,7 @@ export const Pomy = () => {
     return (
 
 
-        < modeContext.Provider value={{ timingMode, setTimingMode }}>
+        < modeContext.Provider value={{ timingMode, setTimingMode, timingState, setTimingState }}>
 
 
             {
@@ -149,16 +171,7 @@ export const Pomy = () => {
 
                     />
 
-                    <ActionButtons
-                        setstart={setstart}
-                        setSeconds={setSeconds}
-                        setMinutes={setMinutes}
-                        start={start}
-                        setPauseActived={setPauseActived}
-                        pauseActived={pauseActived}
-                        setReset={setReset}
-
-                    />
+                    <ActionButtons />
 
 
                     <Navigation openModal={handleOpenModal} navigationRef={navRef} />

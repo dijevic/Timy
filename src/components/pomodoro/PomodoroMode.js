@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from 'react'
-import { timingTypesModes } from '../../config/modes'
+import { timingTypesModes, timingStateMode } from '../../config/modes'
 import { modeContext } from '../../context/mainContext'
 
 import styles from '../../scss/components/pomodoro.module.scss'
@@ -7,7 +7,7 @@ import styles from '../../scss/components/pomodoro.module.scss'
 
 export const PomodoroMode = () => {
 
-    const { timingMode, setTimingMode } = useContext(modeContext)
+    const { timingMode, setTimingMode, setTimingState } = useContext(modeContext)
 
 
     const refButtomPomodoro = useRef()
@@ -18,6 +18,7 @@ export const PomodoroMode = () => {
 
     const handleChangeTimingMode = ({ target }) => {
         setTimingMode(target.name)
+        setTimingState(timingStateMode.unActived)
 
     }
 

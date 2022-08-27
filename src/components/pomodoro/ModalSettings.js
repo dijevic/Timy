@@ -1,15 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import validator from 'validator'
+
+import { timingTypesModes } from '../../config/modes'
+import { modeContext } from '../../context/mainContext'
 
 // hooks
 import { useForm } from '../../hooks/useForm'
 // types
-import { timingTypesModes } from '../../config/modes'
+import { timingStateMode } from '../../config/modes'
 // css
 import styles from '../../scss/components/pomodoro.module.scss'
 
 
 export const ModalSettings = ({ openModal, handleChangeSettings }) => {
+
+    const { setTimingState } = useContext(modeContext)
 
 
     const initialState = {
@@ -31,35 +36,32 @@ export const ModalSettings = ({ openModal, handleChangeSettings }) => {
     const handleCloseModal = () => {
         openModal()
         setUiError(false)
-
-
-
     }
 
     const handleSaveSettings = () => {
 
 
 
-        if (!validator.isNumeric(pomodoro.trim()) || pomodoro > 60 || validator.isEmpty(pomodoro)) {
+        if (!validator.isNumeric(pomodoro.trim()) || pomodoro > 60 || pomodoro < 1 || validator.isEmpty(pomodoro)) {
             setUiError(true)
             return
         }
 
-        if (!validator.isNumeric(shortBreaking.trim()) || shortBreaking > 60 || validator.isEmpty(shortBreaking)) {
+        if (!validator.isNumeric(shortBreaking.trim()) || shortBreaking > 60 || shortBreaking < 1 || validator.isEmpty(shortBreaking)) {
             setUiError(true)
 
             return
 
         }
 
-        if (!validator.isNumeric(longBreaking.trim()) || longBreaking > 60 || validator.isEmpty(longBreaking)) {
+        if (!validator.isNumeric(longBreaking.trim()) || longBreaking > 60 || longBreaking < 1 || validator.isEmpty(longBreaking)) {
             setUiError(true)
 
             return
 
         }
         setUiError(false)
-
+        setTimingState(timingStateMode.updating)
 
         localStorage.setItem(timingTypesModes.pomodoro, pomodoro)
         localStorage.setItem(timingTypesModes.shortBreaking, shortBreaking)
@@ -73,7 +75,7 @@ export const ModalSettings = ({ openModal, handleChangeSettings }) => {
 
     return (
         <div className={styles.modal}>
-            <div className={styles.modalContainer}>
+            <form className={styles.modalContainer}>
 
                 <h2 className={styles.modalTitle}>Settings</h2>
 
@@ -141,12 +143,13 @@ export const ModalSettings = ({ openModal, handleChangeSettings }) => {
                 <div className={styles.ModalSettingsButtonsContainer}>
                     <button
                         onClick={handleSaveSettings}
+                        type="submit"
                         className={`${styles.ModalSettingsButton} ${styles.ModalSettingsButtonSave}`}>Save</button>
                     <button
                         onClick={handleCloseModal}
                         className={`${styles.ModalSettingsButton} ${styles.ModalSettingsButtonClose}`}>Close</button>
                 </div>
-            </div>
+            </form>
 
         </div>
     )

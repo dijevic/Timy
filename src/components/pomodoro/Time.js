@@ -4,25 +4,16 @@ import { modeContext } from '../../context/mainContext'
 
 
 import styles from '../../scss/components/pomodoro.module.scss'
+
+// types and modes
 import { PomodoroMode } from './PomodoroMode'
-
-export const Time = ({
-    start,
-    seconds,
-    minutes,
-    pauseActived,
-    setSeconds,
-    setMinutes,
-    setstart,
-    setPauseActived,
-    handleTiming,
-    reset,
-    setReset,
-    settings
-}) => {
+import { timingStateMode } from '../../config/modes'
 
 
-    const { timingMode } = useContext(modeContext)
+export const Time = ({ seconds, minutes, setSeconds, setMinutes, handleTiming }) => {
+
+
+    const { timingMode, timingState, setTimingState } = useContext(modeContext)
 
     let secondsIntervalRef = useRef()
     const loadingRef = useRef()
@@ -32,10 +23,9 @@ export const Time = ({
 
 
 
-
     useEffect(() => {
 
-        if (start) {
+        if (timingState === timingStateMode.started) {
             // cleaning the setTimeout to avoid ERRORS
             window.clearTimeout(secondsIntervalRef.current)
 
@@ -54,7 +44,7 @@ export const Time = ({
         }
 
 
-    }, [start, seconds, handleTiming])
+    }, [timingState, seconds, handleTiming])
 
 
 
@@ -88,13 +78,14 @@ export const Time = ({
                     break;
             }
 
+            if (timingState === timingStateMode.unActived || timingState === timingStateMode.updating) {
+                setSeconds(60)
+                setMinutes(minutes)
+                setTimingState(timingStateMode.unActived)
+            }
 
 
-            setSeconds(60)
-            setMinutes(minutes)
-            setReset(false)
-            setstart(false)
-            setPauseActived(false)
+
 
 
         }
@@ -102,7 +93,8 @@ export const Time = ({
 
         handleModes(timingMode)
 
-    }, [timingMode, reset, setMinutes, setReset, setSeconds, setstart, setPauseActived, settings])
+
+    }, [timingMode, timingState, setMinutes, setSeconds, setTimingState])
 
 
 
@@ -120,11 +112,10 @@ export const Time = ({
                     {minutes} :
 
                     {
-                        (!start && pauseActived) ? seconds :
-                            (!start && pauseActived) ? secondsStart :
-                                (seconds < 60 && seconds >= 10) ? seconds :
-                                    (seconds < 10 && seconds > 0) ? `0${seconds}` :
-                                        (seconds === 0 || seconds === 60) && secondsStart
+                        (timingState === timingStateMode.paused) ? seconds :
+                            (seconds < 60 && seconds >= 10) ? seconds :
+                                (seconds < 10 && seconds > 0) ? `0${seconds}` :
+                                    (seconds === 0 || seconds === 60) && secondsStart
                     }
 
 
