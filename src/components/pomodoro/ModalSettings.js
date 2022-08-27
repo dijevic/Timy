@@ -1,6 +1,11 @@
-import React from 'react'
-import { timingTypesModes } from '../../config/modes'
+import React, { useState } from 'react'
+import validator from 'validator'
+
+// hooks
 import { useForm } from '../../hooks/useForm'
+// types
+import { timingTypesModes } from '../../config/modes'
+// css
 import styles from '../../scss/components/pomodoro.module.scss'
 
 
@@ -16,6 +21,8 @@ export const ModalSettings = ({ openModal, handleChangeSettings }) => {
 
     const [InputValues, handleInputChange] = useForm(initialState)
 
+    const [uiError, setUiError] = useState(false)
+
     const { pomodoro, shortBreaking, longBreaking } = InputValues
 
 
@@ -23,9 +30,36 @@ export const ModalSettings = ({ openModal, handleChangeSettings }) => {
 
     const handleCloseModal = () => {
         openModal()
+        setUiError(false)
+
+
+
     }
 
     const handleSaveSettings = () => {
+
+
+
+        if (!validator.isNumeric(pomodoro.trim()) || pomodoro > 60 || validator.isEmpty(pomodoro)) {
+            setUiError(true)
+            return
+        }
+
+        if (!validator.isNumeric(shortBreaking.trim()) || shortBreaking > 60 || validator.isEmpty(shortBreaking)) {
+            setUiError(true)
+
+            return
+
+        }
+
+        if (!validator.isNumeric(longBreaking.trim()) || longBreaking > 60 || validator.isEmpty(longBreaking)) {
+            setUiError(true)
+
+            return
+
+        }
+        setUiError(false)
+
 
         localStorage.setItem(timingTypesModes.pomodoro, pomodoro)
         localStorage.setItem(timingTypesModes.shortBreaking, shortBreaking)
@@ -42,7 +76,8 @@ export const ModalSettings = ({ openModal, handleChangeSettings }) => {
             <div className={styles.modalContainer}>
 
                 <h2 className={styles.modalTitle}>Settings</h2>
-                <p className={styles.SettingTypeName}>Time (minutes)</p>
+
+                <p className={styles.settingTypeName}>Time (minutes)</p>
 
                 <div className={styles.settingsOption}>
                     <h3 className={styles.settingsOptionName}>Focuse time</h3>
@@ -93,6 +128,14 @@ export const ModalSettings = ({ openModal, handleChangeSettings }) => {
                         />
                     </span>
 
+                </div>
+
+                <div className={styles.settingsRules}>
+
+                    <ul >
+                        <li className={(uiError) ? `${styles.settingsRule} ${styles.error}` : styles.settingsRule}>Only Number from 0 - 60 are allowed</li>
+                        <li className={(uiError) ? `${styles.settingsRule} ${styles.error}` : styles.settingsRule}>Strings are not allowed</li>
+                    </ul>
                 </div>
 
                 <div className={styles.ModalSettingsButtonsContainer}>

@@ -7,6 +7,7 @@ import styles from '../../scss/components/pomodoro.module.scss'
 import { Link } from 'react-router-dom'
 import { CloseIcon } from '../svgs/CloseIcon'
 
+
 export const Navigation = ({ openModal, navigationRef }) => {
 
 
