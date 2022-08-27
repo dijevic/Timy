@@ -67,12 +67,16 @@ export const ActionButtons = () => {
                         </>
 
                         :
-                        (timingState === timingStateMode.unActived)
+                        (timingState === timingStateMode.unActived || timingState === timingStateMode.updating)
                         &&
                         <PlayButton showStopButton={handleStarTiming} />
 
 
+
+
             }
+
+
 
 
 

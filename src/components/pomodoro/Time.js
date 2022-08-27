@@ -81,7 +81,6 @@ export const Time = ({ seconds, minutes, setSeconds, setMinutes, handleTiming })
             if (timingState === timingStateMode.unActived || timingState === timingStateMode.updating) {
                 setSeconds(60)
                 setMinutes(minutes)
-                setTimingState(timingStateMode.unActived)
             }
 
 

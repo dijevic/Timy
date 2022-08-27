@@ -23,10 +23,7 @@ import styles from '../scss/components/pomodoro.module.scss'
 export const Pomy = () => {
 
 
-    const [start, setstart] = useState(false)
-    const [pauseActived, setPauseActived] = useState(false)
-    const [reset, setReset] = useState(false)
-    const [settings, setSettings] = useState(false)
+
 
     const [timingState, setTimingState] = useState(timingStateMode.unActived)
 
@@ -43,15 +40,10 @@ export const Pomy = () => {
 
     const [openModal, setOpenModal] = useState(false)
 
-    const handleChangeSettings = () => {
 
-        setSettings(state => !state)
-    }
 
     const handleTimingCompleted = () => {
 
-        setstart(false)
-        setReset(true)
 
         switch (timingMode) {
             case timingTypesModes.shortBreaking:
@@ -76,9 +68,7 @@ export const Pomy = () => {
 
     }
 
-    const handleOpenModal = () => {
-        setOpenModal(state => !state)
-    }
+
 
 
 
@@ -120,6 +110,11 @@ export const Pomy = () => {
 
     }
 
+    const handleOpenModal = () => {
+        setOpenModal(state => !state)
+        setTimingState(timingStateMode.updating)
+    }
+
     const handleOpenNavigation = () => {
         navRef.current(true)
 
@@ -137,7 +132,7 @@ export const Pomy = () => {
 
             {
                 (openModal) &&
-                <ModalSettings handleChangeSettings={handleChangeSettings} openModal={handleOpenModal} />
+                <ModalSettings openModal={handleOpenModal} />
 
             }
 
@@ -155,26 +150,19 @@ export const Pomy = () => {
 
 
                     <Time
-                        setstart={setstart}
-                        start={start}
                         seconds={seconds}
                         minutes={minutes}
-                        pauseActived={pauseActived}
                         setSeconds={setSeconds}
                         setMinutes={setMinutes}
-                        setPauseActived={setPauseActived}
                         handleTiming={handleTiming}
-                        reset={reset}
-                        setReset={setReset}
-                        settings={settings}
-
-
                     />
 
                     <ActionButtons />
 
 
-                    <Navigation openModal={handleOpenModal} navigationRef={navRef} />
+                    <Navigation
+                        openModal={handleOpenModal}
+                        navigationRef={navRef} />
 
                     <Input />
 

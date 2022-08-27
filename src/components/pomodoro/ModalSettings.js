@@ -12,7 +12,7 @@ import { timingStateMode } from '../../config/modes'
 import styles from '../../scss/components/pomodoro.module.scss'
 
 
-export const ModalSettings = ({ openModal, handleChangeSettings }) => {
+export const ModalSettings = ({ openModal }) => {
 
     const { setTimingState } = useContext(modeContext)
 
@@ -36,6 +36,7 @@ export const ModalSettings = ({ openModal, handleChangeSettings }) => {
     const handleCloseModal = () => {
         openModal()
         setUiError(false)
+        setTimingState(timingStateMode.unActived)
     }
 
     const handleSaveSettings = () => {
@@ -68,7 +69,6 @@ export const ModalSettings = ({ openModal, handleChangeSettings }) => {
         localStorage.setItem(timingTypesModes.longBreaking, longBreaking)
 
         handleCloseModal()
-        handleChangeSettings()
     }
 
 
@@ -90,7 +90,9 @@ export const ModalSettings = ({ openModal, handleChangeSettings }) => {
                             name={timingTypesModes.pomodoro}
                             className={styles.inputNumber}
                             type="number"
+
                             min="1"
+                            max={60}
                             step="1"
                             value={pomodoro}
                             onChange={handleInputChange}
@@ -107,6 +109,8 @@ export const ModalSettings = ({ openModal, handleChangeSettings }) => {
                             name={timingTypesModes.shortBreaking}
                             className={styles.inputNumber}
                             type="number"
+                            max={60}
+
                             min="1"
                             step="1"
                             value={shortBreaking}
@@ -123,6 +127,8 @@ export const ModalSettings = ({ openModal, handleChangeSettings }) => {
                             name={timingTypesModes.longBreaking}
                             className={styles.inputNumber}
                             type="number"
+                            max={60}
+
                             min="1"
                             step="1"
                             value={longBreaking}
