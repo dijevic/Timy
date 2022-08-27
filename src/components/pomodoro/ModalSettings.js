@@ -45,11 +45,20 @@ export const ModalSettings = ({ openModal }) => {
 
         if (!validator.isNumeric(pomodoro.trim()) || pomodoro > 60 || pomodoro < 1 || validator.isEmpty(pomodoro)) {
             setUiError(true)
+            setTimeout(() => {
+                setUiError(false)
+
+            }, 500);
+
             return
         }
 
         if (!validator.isNumeric(shortBreaking.trim()) || shortBreaking > 60 || shortBreaking < 1 || validator.isEmpty(shortBreaking)) {
             setUiError(true)
+            setTimeout(() => {
+                setUiError(false)
+
+            }, 500);
 
             return
 
@@ -57,16 +66,23 @@ export const ModalSettings = ({ openModal }) => {
 
         if (!validator.isNumeric(longBreaking.trim()) || longBreaking > 60 || longBreaking < 1 || validator.isEmpty(longBreaking)) {
             setUiError(true)
+            setTimeout(() => {
+                setUiError(false)
+
+            }, 500);
 
             return
 
         }
+
+
         setUiError(false)
         setTimingState(timingStateMode.updating)
 
-        localStorage.setItem(timingTypesModes.pomodoro, pomodoro)
-        localStorage.setItem(timingTypesModes.shortBreaking, shortBreaking)
-        localStorage.setItem(timingTypesModes.longBreaking, longBreaking)
+
+        localStorage.setItem(timingTypesModes.pomodoro, Math.floor(pomodoro))
+        localStorage.setItem(timingTypesModes.shortBreaking, Math.floor(pomodoro))
+        localStorage.setItem(timingTypesModes.longBreaking, Math.floor(pomodoro))
 
         handleCloseModal()
     }
