@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef, useEffect } from 'react'
+import React, { useState, useContext, useRef } from 'react'
 import validator from 'validator'
 
 import { timingTypesModes } from '../../config/modes'

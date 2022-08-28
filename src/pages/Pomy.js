@@ -25,91 +25,17 @@ export const Pomy = () => {
 
 
 
+    const navRef = useRef()
     const [timingState, setTimingState] = useState(timingStateMode.unActived)
 
     const [seconds, setSeconds] = useState(0)
     const [minutes, setMinutes] = useState(0)
 
-
-
-    const navRef = useRef()
-
     const [timingMode, setTimingMode] = useState(timingTypesModes.pomodoro)
-
 
 
     const [openModal, setOpenModal] = useState(false)
 
-
-
-    const handleTimingCompleted = () => {
-
-
-        switch (timingMode) {
-            case timingTypesModes.shortBreaking:
-                setTimingMode(timingTypesModes.pomodoro)
-
-
-                break;
-            case timingTypesModes.pomodoro:
-                setTimingMode(timingTypesModes.shortBreaking)
-
-                break;
-            case timingTypesModes.longBreaking:
-                setTimingMode(timingTypesModes.longBreaking)
-
-
-                break;
-
-            default:
-                break;
-        }
-
-
-    }
-
-
-
-
-
-
-    // discount minutes or seconds
-    const handleTiming = () => {
-
-
-        // verify if the pomodoro is completed
-
-        if (seconds === 0 && minutes === 0) {
-            handleTimingCompleted()
-            setTimingState(timingStateMode.unActived)
-            return
-        }
-
-        // discount the first minute when starting the timing
-
-
-        if (seconds === 60 && timingState === timingStateMode.started) {
-            setMinutes((state) => state - 1)
-
-        }
-
-        // handle and reset the seconds whend it turns zero but the pomodoro isn't completed
-
-        if (seconds === 0) {
-            setSeconds(60)
-            setSeconds((sec) => sec - 1)
-            setMinutes((state) => state - 1)
-
-
-        } else {
-
-            // discount seconds
-            setSeconds((sec) => sec - 1)
-
-        }
-
-
-    }
 
     const handleOpenModal = () => {
         setOpenModal(state => !state)
@@ -119,6 +45,14 @@ export const Pomy = () => {
         navRef.current(true)
 
     }
+
+
+
+
+
+
+
+
 
 
 
@@ -154,7 +88,6 @@ export const Pomy = () => {
                         minutes={minutes}
                         setSeconds={setSeconds}
                         setMinutes={setMinutes}
-                        handleTiming={handleTiming}
                     />
 
                     <ActionButtons />
