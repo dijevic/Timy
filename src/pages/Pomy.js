@@ -56,7 +56,7 @@ export const Pomy = () => {
 
                 break;
             case timingTypesModes.longBreaking:
-                setTimingMode(timingTypesModes.pomodoro)
+                setTimingMode(timingTypesModes.longBreaking)
 
 
                 break;
@@ -81,6 +81,7 @@ export const Pomy = () => {
 
         if (seconds === 0 && minutes === 0) {
             handleTimingCompleted()
+            setTimingState(timingStateMode.unActived)
             return
         }
 
@@ -112,7 +113,6 @@ export const Pomy = () => {
 
     const handleOpenModal = () => {
         setOpenModal(state => !state)
-        setTimingState(timingStateMode.updating)
     }
 
     const handleOpenNavigation = () => {

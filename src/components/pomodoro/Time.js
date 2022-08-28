@@ -17,6 +17,7 @@ export const Time = ({ seconds, minutes, setSeconds, setMinutes, handleTiming })
 
     let secondsIntervalRef = useRef()
     const loadingRef = useRef()
+    const loadingRef2 = useRef()
     const secondsStart = '00'
 
 
@@ -46,7 +47,25 @@ export const Time = ({ seconds, minutes, setSeconds, setMinutes, handleTiming })
 
     }, [timingState, seconds, handleTiming])
 
+    useEffect(() => {
 
+        if (timingState === timingStateMode.started) {
+
+            loadingRef.current.style.animationDuration = '1s'
+
+
+        } else {
+
+            loadingRef.current.style.animationDuration = ''
+
+
+
+
+
+        }
+
+
+    }, [timingState])
 
 
 
@@ -78,7 +97,7 @@ export const Time = ({ seconds, minutes, setSeconds, setMinutes, handleTiming })
                     break;
             }
 
-            if (timingState === timingStateMode.unActived || timingState === timingStateMode.updating) {
+            if (timingState === timingStateMode.unActived) {
                 setSeconds(60)
                 setMinutes(minutes)
             }
@@ -100,11 +119,17 @@ export const Time = ({ seconds, minutes, setSeconds, setMinutes, handleTiming })
 
 
 
+
+
+
     return (
         <div className={styles.clockContainer}>
             <PomodoroMode />
 
-            <div className={styles.clock}>
+            <div
+                ref={loadingRef}
+
+                className={styles.clock}>
 
 
                 <span className={styles.clockTime}>
@@ -125,7 +150,7 @@ export const Time = ({ seconds, minutes, setSeconds, setMinutes, handleTiming })
 
 
                 <span
-                    ref={loadingRef}
+                    ref={loadingRef2}
                     className={styles.clockLoading}>
 
                 </span>

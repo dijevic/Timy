@@ -13,21 +13,32 @@ import { timingStateMode } from '../../config/modes'
 
 export const ActionButtons = () => {
 
+    // todo atomizar funcion
 
     const { setTimingState, timingState } = useContext(modeContext)
 
-    const handleActions = ({ target }) => {
+    const handleStarTiming = () => {
 
-        if (!target.name) {
-            let refParent = target.parentNode
 
-            setTimingState(refParent.name)
+        setTimingState(timingStateMode.started)
 
-        } else {
-            setTimingState(target.name)
 
-        }
     }
+
+    const handleStopTiming = () => {
+
+
+        setTimingState(timingStateMode.unActived)
+
+    }
+    const handlePauseTiming = () => {
+
+        setTimingState(timingStateMode.paused)
+
+
+    }
+
+
 
 
 
@@ -37,19 +48,22 @@ export const ActionButtons = () => {
         <div
             className={styles.actionButtons}>
 
+
+
+
             {
 
                 (timingState === timingStateMode.started) ?
 
                     <>
-                        <PauseButton showStopButton={handleActions} />
-                        <StopButton stopTiming={handleActions} />
+                        <PauseButton showStopButton={handlePauseTiming} />
+                        <StopButton stopTiming={handleStopTiming} />
                     </> :
                     (timingState === timingStateMode.paused) ?
 
                         <>
-                            <PlayButton showStopButton={handleActions} />
-                            <StopButton stopTiming={handleActions} />
+                            <PlayButton showStopButton={handleStarTiming} />
+                            <StopButton stopTiming={handleStopTiming} />
 
 
                         </>
@@ -57,7 +71,7 @@ export const ActionButtons = () => {
                         :
                         (timingState === timingStateMode.unActived || timingState === timingStateMode.updating)
                         &&
-                        <PlayButton showStopButton={handleActions} />
+                        <PlayButton showStopButton={handleStarTiming} />
 
 
 

@@ -36,7 +36,6 @@ export const ModalSettings = ({ openModal }) => {
     const handleCloseModal = () => {
         openModal()
         setUiError(false)
-        setTimingState(timingStateMode.unActived)
     }
 
     const handleSaveSettings = () => {
@@ -81,8 +80,8 @@ export const ModalSettings = ({ openModal }) => {
 
 
         localStorage.setItem(timingTypesModes.pomodoro, Math.floor(pomodoro))
-        localStorage.setItem(timingTypesModes.shortBreaking, Math.floor(pomodoro))
-        localStorage.setItem(timingTypesModes.longBreaking, Math.floor(pomodoro))
+        localStorage.setItem(timingTypesModes.shortBreaking, Math.floor(shortBreaking))
+        localStorage.setItem(timingTypesModes.longBreaking, Math.floor(longBreaking))
 
         handleCloseModal()
     }

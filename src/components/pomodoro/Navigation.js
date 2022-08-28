@@ -51,8 +51,7 @@ export const Navigation = ({ openModal, navigationRef }) => {
                 <li>
                     <span
                         className={styles.navItem}
-                        onClick={handleOpenModal}
-                        to="/settings">
+                        onClick={handleOpenModal}>
                         <AdjustmentIcon />
 
                         Settings

@@ -75,7 +75,9 @@
     width:100%;
     margin-top:50px;
     flex-direction: column;
-    
+    animation-name: fadeInUp, opacity;
+    animation-iteration-count: initial;
+    animation-duration: .7s;
 
 
 
@@ -94,13 +96,14 @@
         cursor: pointer;
         box-shadow:1px 1px 20px vars.$purple2;
         transition:0.5s ease all;
-    margin-top:50px;
-    border: 2px solid vars.$purple2;
+        margin-top:50px;
+        border: 2px solid vars.$purple2;
+        animation-name: loading ;
+        animation-iteration-count: infinite;
+        animation-direction: alternate-reverse;
 
         
-    animation-name: fadeInUp, opacity;
-    animation-iteration-count: initial;
-    animation-duration: .7s;
+  
 
         .clockTime{
             font-size:3rem;
@@ -108,6 +111,9 @@
             font-weight:700;
             color:vars.$white;
             z-index: 1000;
+            animation-name:  opacity;
+            animation-iteration-count: initial;
+            animation-duration: .7s;
         }
 
 
@@ -119,10 +125,7 @@
             width: 100%;
             background: vars.$purple2;
             z-index: 10;
-            animation-name:clockLoading;
-            animation-iteration-count: initial;
-            animation-timing-function: ease-in-out;
-            animation-delay: 3s;
+            
 
         }
     }
@@ -562,5 +565,10 @@
     50%{transform:translateX(-5px)};
     100%{transform:translateX(0)};
     
+}
+
+@keyframes loading {
+    0%{box-shadow:1px 1px 20px vars.$purple2;}
+    100%{box-shadow:5px 5px 50px vars.$purple2;}
 }
 
