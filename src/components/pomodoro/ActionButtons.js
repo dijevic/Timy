@@ -13,31 +13,21 @@ import { timingStateMode } from '../../config/modes'
 
 export const ActionButtons = () => {
 
-    // todo atomizar funcion
 
     const { setTimingState, timingState } = useContext(modeContext)
 
-    const handleStarTiming = () => {
+    const handleActions = ({ target }) => {
 
+        if (!target.name) {
+            let refParent = target.parentNode
 
-        setTimingState(timingStateMode.started)
+            setTimingState(refParent.name)
 
+        } else {
+            setTimingState(target.name)
 
+        }
     }
-
-    const handleStopTiming = () => {
-
-
-        setTimingState(timingStateMode.unActived)
-
-    }
-    const handlePauseTiming = () => {
-
-        setTimingState(timingStateMode.paused)
-
-
-    }
-
 
 
 
@@ -47,22 +37,19 @@ export const ActionButtons = () => {
         <div
             className={styles.actionButtons}>
 
-
-
-
             {
 
                 (timingState === timingStateMode.started) ?
 
                     <>
-                        <PauseButton showStopButton={handlePauseTiming} />
-                        <StopButton stopTiming={handleStopTiming} />
+                        <PauseButton showStopButton={handleActions} />
+                        <StopButton stopTiming={handleActions} />
                     </> :
                     (timingState === timingStateMode.paused) ?
 
                         <>
-                            <PlayButton showStopButton={handleStarTiming} />
-                            <StopButton stopTiming={handleStopTiming} />
+                            <PlayButton showStopButton={handleActions} />
+                            <StopButton stopTiming={handleActions} />
 
 
                         </>
@@ -70,7 +57,7 @@ export const ActionButtons = () => {
                         :
                         (timingState === timingStateMode.unActived || timingState === timingStateMode.updating)
                         &&
-                        <PlayButton showStopButton={handleStarTiming} />
+                        <PlayButton showStopButton={handleActions} />
 
 
 
