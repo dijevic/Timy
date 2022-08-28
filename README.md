@@ -16,7 +16,7 @@
 
 <h2 align="center">
 
-![LaptopGIF (2)](https://user-images.githubusercontent.com/66389456/179600154-bcabbf40-6ee5-4897-8fa4-1fb243a9c0f4.gif)
+
 
 </h2>
 
