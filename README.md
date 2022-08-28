@@ -1,6 +1,4 @@
-# Timy App⌚🕛⏰
 
-<h1 align="center"> Timy </h1>
 <h3 color="red" align="center">A React app to handle your time :) ⌚🕛⏰ </h3>
 
   <br/>
