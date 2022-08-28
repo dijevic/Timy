@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useRef, useEffect } from 'react'
 import validator from 'validator'
 
 import { timingTypesModes } from '../../config/modes'
@@ -15,6 +15,8 @@ import styles from '../../scss/components/pomodoro.module.scss'
 export const ModalSettings = ({ openModal }) => {
 
     const { setTimingState } = useContext(modeContext)
+
+    const divRef = useRef()
 
 
     const initialState = {
@@ -34,9 +36,14 @@ export const ModalSettings = ({ openModal }) => {
 
 
     const handleCloseModal = () => {
+
         openModal()
         setUiError(false)
     }
+
+
+
+
 
     const handleSaveSettings = () => {
 
@@ -89,88 +96,97 @@ export const ModalSettings = ({ openModal }) => {
 
 
     return (
-        <div className={styles.modal}>
-            <form className={styles.modalContainer}>
+        <div
+            ref={divRef}
+            onClick={handleCloseModal}
+            className={styles.modal}>
+            <div
+                ref={divRef}
+                onClick={handleCloseModal}
+            >
 
-                <h2 className={styles.modalTitle}>Settings</h2>
+                <form className={styles.modalContainer}>
 
-                <p className={styles.settingTypeName}>Time (minutes)</p>
+                    <h2 className={styles.modalTitle}>Settings</h2>
 
-                <div className={styles.settingsOption}>
-                    <h3 className={styles.settingsOptionName}>Focuse time</h3>
+                    <p className={styles.settingTypeName}>Time (minutes)</p>
 
-                    <span className={styles.settingsOptionTime}>
+                    <div className={styles.settingsOption}>
+                        <h3 className={styles.settingsOptionName}>Focuse time</h3>
 
-                        <input
-                            name={timingTypesModes.pomodoro}
-                            className={styles.inputNumber}
-                            type="number"
+                        <span className={styles.settingsOptionTime}>
 
-                            min="1"
-                            max={60}
-                            step="1"
-                            value={pomodoro}
-                            onChange={handleInputChange}
-                        />
+                            <input
+                                name={timingTypesModes.pomodoro}
+                                className={styles.inputNumber}
+                                type="number"
 
-                    </span>
-                </div>
-                <div className={styles.settingsOption}>
-                    <h3 className={styles.settingsOptionName}>Short Break</h3>
+                                min="1"
+                                max={60}
+                                step="1"
+                                value={pomodoro}
+                                onChange={handleInputChange}
+                            />
 
-                    <span className={styles.settingsOptionTime}>
+                        </span>
+                    </div>
+                    <div className={styles.settingsOption}>
+                        <h3 className={styles.settingsOptionName}>Short Break</h3>
 
-                        <input
-                            name={timingTypesModes.shortBreaking}
-                            className={styles.inputNumber}
-                            type="number"
-                            max={60}
+                        <span className={styles.settingsOptionTime}>
 
-                            min="1"
-                            step="1"
-                            value={shortBreaking}
-                            onChange={handleInputChange}
-                        />
+                            <input
+                                name={timingTypesModes.shortBreaking}
+                                className={styles.inputNumber}
+                                type="number"
+                                max={60}
 
-                    </span>
-                </div>
-                <div className={styles.settingsOption}>
-                    <h3 className={styles.settingsOptionName}>Long Break</h3>
-                    <span className={styles.settingsOptionTime}>
+                                min="1"
+                                step="1"
+                                value={shortBreaking}
+                                onChange={handleInputChange}
+                            />
 
-                        <input
-                            name={timingTypesModes.longBreaking}
-                            className={styles.inputNumber}
-                            type="number"
-                            max={60}
+                        </span>
+                    </div>
+                    <div className={styles.settingsOption}>
+                        <h3 className={styles.settingsOptionName}>Long Break</h3>
+                        <span className={styles.settingsOptionTime}>
 
-                            min="1"
-                            step="1"
-                            value={longBreaking}
-                            onChange={handleInputChange}
-                        />
-                    </span>
+                            <input
+                                name={timingTypesModes.longBreaking}
+                                className={styles.inputNumber}
+                                type="number"
+                                max={60}
 
-                </div>
+                                min="1"
+                                step="1"
+                                value={longBreaking}
+                                onChange={handleInputChange}
+                            />
+                        </span>
 
-                <div className={styles.settingsRules}>
+                    </div>
 
-                    <ul >
-                        <li className={(uiError) ? `${styles.settingsRule} ${styles.error}` : styles.settingsRule}>Only Number from 0 - 60 are allowed</li>
-                        <li className={(uiError) ? `${styles.settingsRule} ${styles.error}` : styles.settingsRule}>Strings are not allowed</li>
-                    </ul>
-                </div>
+                    <div className={styles.settingsRules}>
 
-                <div className={styles.ModalSettingsButtonsContainer}>
-                    <button
-                        onClick={handleSaveSettings}
-                        type="submit"
-                        className={`${styles.ModalSettingsButton} ${styles.ModalSettingsButtonSave}`}>Save</button>
-                    <button
-                        onClick={handleCloseModal}
-                        className={`${styles.ModalSettingsButton} ${styles.ModalSettingsButtonClose}`}>Close</button>
-                </div>
-            </form>
+                        <ul >
+                            <li className={(uiError) ? `${styles.settingsRule} ${styles.error}` : styles.settingsRule}>Only Number from 0 - 60 are allowed</li>
+                            <li className={(uiError) ? `${styles.settingsRule} ${styles.error}` : styles.settingsRule}>Strings are not allowed</li>
+                        </ul>
+                    </div>
+
+                    <div className={styles.ModalSettingsButtonsContainer}>
+                        <button
+                            onClick={handleSaveSettings}
+                            type="submit"
+                            className={`${styles.ModalSettingsButton} ${styles.ModalSettingsButtonSave}`}>Save</button>
+                        <button
+                            onClick={handleCloseModal}
+                            className={`${styles.ModalSettingsButton} ${styles.ModalSettingsButtonClose}`}>Close</button>
+                    </div>
+                </form>
+            </div>
 
         </div>
     )
