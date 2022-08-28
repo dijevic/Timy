@@ -1,5 +1,5 @@
 
-<h1 color="red" align="center">imy App ⌚🕛⏰</h1>
+<h1 color="red" align="center">Timy App ⌚🕛⏰</h1>
 
 <h3 color="red" align="center">A React app to handle your time :) ⌚🕛⏰ </h3>
 
