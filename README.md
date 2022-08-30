@@ -1,7 +1,7 @@
-# Timy App
 
-<h1 align="center"> Timy </h1>
-<h3 color="red" align="center">A React app to handle your time :) </h3>
+<h1 color="red" align="center">Timy App ⌚🕛⏰</h1>
+
+<h3 color="red" align="center">A React app to handle your time :) ⌚🕛⏰ </h3>
 
   <br/>
   
@@ -16,7 +16,7 @@
 
 <h2 align="center">
 
-![LaptopGIF (2)](https://user-images.githubusercontent.com/66389456/179600154-bcabbf40-6ee5-4897-8fa4-1fb243a9c0f4.gif)
+
 
 </h2>
 
