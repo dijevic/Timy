@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { AdjustmentIcon } from '../svgs/AdjustmentIcon'
-import { ClockIcon } from '../svgs/ClockIcon'
-import { HomeIcon } from '../svgs/HomeIcon'
+// import { ClockIcon } from '../svgs/ClockIcon'
+// import { HomeIcon } from '../svgs/HomeIcon'
 
 import styles from '../../scss/components/pomodoro.module.scss'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { CloseIcon } from '../svgs/CloseIcon'
 
 
@@ -28,7 +28,7 @@ export const Navigation = ({ openModal, navigationRef }) => {
     return (
         <nav className={(open) ? `${styles.nav} ${styles.navOpen}` : `${styles.nav}`}>
             <ul>
-                <li>
+                {/* <li>
 
                     <Link
                         className={styles.navItem} to='/'>
@@ -47,7 +47,7 @@ export const Navigation = ({ openModal, navigationRef }) => {
                     </Link>
 
 
-                </li>
+                </li> */}
                 <li>
                     <span
                         className={styles.navItem}
