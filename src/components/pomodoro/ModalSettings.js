@@ -15,7 +15,6 @@ import styles from '../../scss/components/pomodoro.module.scss'
 export const ModalSettings = ({ openModal }) => {
 
     const { setTimingState } = useContext(modeContext)
-
     const divRef = useRef()
 
 
@@ -32,21 +31,50 @@ export const ModalSettings = ({ openModal }) => {
 
     const { pomodoro, shortBreaking, longBreaking } = InputValues
 
+    const [isClosing, setIsClosing] = useState(false)
+
 
 
 
     const handleCloseModal = () => {
 
-        openModal()
-        setUiError(false)
+        setIsClosing(true)
+
+
+        setTimeout(() => {
+            openModal()
+            setUiError(false)
+            setIsClosing(false)
+
+        }, 400);
+
+    }
+
+    const handleCloseModalOutside = ({ target }) => {
+
+        if (target === divRef.current) {
+            setIsClosing(true)
+
+            setTimeout(() => {
+                openModal()
+                setUiError(false)
+                setIsClosing(false)
+                console.log('great')
+
+            }, 400);
+        }
+
+
     }
 
 
 
 
 
-    const handleSaveSettings = () => {
 
+
+
+    const handleSaveSettings = () => {
 
 
         if (!validator.isNumeric(pomodoro.trim()) || pomodoro > 60 || pomodoro < 1 || validator.isEmpty(pomodoro)) {
@@ -95,17 +123,18 @@ export const ModalSettings = ({ openModal }) => {
 
 
 
+
+
     return (
         <div
+            onClick={handleCloseModalOutside}
             ref={divRef}
-            onClick={handleCloseModal}
             className={styles.modal}>
             <div
-                ref={divRef}
-                onClick={handleCloseModal}
+
             >
 
-                <form className={styles.modalContainer}>
+                <form className={(isClosing) ? `${styles.modalContainer} ${styles.closeModal}` : styles.modalContainer}>
 
                     <h2 className={styles.modalTitle}>Settings</h2>
 
@@ -183,6 +212,7 @@ export const ModalSettings = ({ openModal }) => {
                             className={`${styles.ModalSettingsButton} ${styles.ModalSettingsButtonSave}`}>Save</button>
                         <button
                             onClick={handleCloseModal}
+                            type="button"
                             className={`${styles.ModalSettingsButton} ${styles.ModalSettingsButtonClose}`}>Close</button>
                     </div>
                 </form>

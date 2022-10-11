@@ -8,7 +8,6 @@ import { modeContext } from '../context/mainContext'
 // components
 import { ActionButtons } from '../components/pomodoro/ActionButtons'
 import { ModalSettings } from '../components/pomodoro/ModalSettings'
-import { Input } from '../components/pomodoro/Input'
 import { Navigation } from '../components/pomodoro/Navigation'
 import { PomodoroTitle } from '../components/pomodoro/PomodoroTitle'
 import { Time } from '../components/pomodoro/Time'
@@ -39,6 +38,7 @@ export const Pomy = () => {
 
     const handleOpenModal = () => {
         setOpenModal(state => !state)
+
     }
 
     const handleOpenNavigation = () => {
@@ -79,7 +79,7 @@ export const Pomy = () => {
                     <Bars />
                 </span>
 
-                <div>
+                <>
                     <PomodoroTitle />
 
 
@@ -97,10 +97,13 @@ export const Pomy = () => {
                         openModal={handleOpenModal}
                         navigationRef={navRef} />
 
-                    <Input />
+
+                    <p>Total Pomodoros : </p>
 
 
-                </div>
+
+
+                </>
             </div>
 
 
