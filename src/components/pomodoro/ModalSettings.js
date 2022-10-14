@@ -57,15 +57,7 @@ export const ModalSettings = ({ openModal }) => {
     const handleCloseModalOutside = ({ target }) => {
 
         if (target === divRef.current) {
-            setIsClosing(true)
-
-            setTimeout(() => {
-                openModal()
-                setUiError(false)
-                setIsClosing(false)
-                console.log('great')
-
-            }, 400);
+            handleCloseModal()
         }
 
 
