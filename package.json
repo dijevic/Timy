@@ -10,6 +10,7 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
+    "react-spinners": "^0.13.6",
     "sass": "^1.54.0",
     "styled-components": "^5.3.5",
     "validator": "^13.7.0",

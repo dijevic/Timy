@@ -1,0 +1,24 @@
+@use '../../variables/variables.scss' as vars ;
+
+.container{
+
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:vars.$darkBlue ;
+    flex-direction:column;
+
+
+}
+
+
+.loadingText{
+
+    font-size:2rem;
+    line-height:2rem;
+    color:vars.$white;
+    font-family: 'Square Peg';
+    margin-top:25px;
+}
