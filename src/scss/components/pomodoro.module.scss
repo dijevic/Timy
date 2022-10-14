@@ -317,13 +317,13 @@
 .modal {
 
     position:fixed;
-    top: 0;
+    top: 5%;
     display: flex;
     align-items:center;
     justify-content:center;
     background: rgba($color: vars.$black2, $alpha: 0.5);
     width: 100%;
-    min-height: 100vh;
+    min-height: 80vh;
     z-index: 20000;
  
 
