@@ -78,7 +78,8 @@ export const ModalSettings = ({ openModal }) => {
 
 
 
-    const handleSaveSettings = () => {
+    const handleSaveSettings = (e) => {
+        e.preventDefault()
 
 
         if (!validator.isNumeric(pomodoro.trim()) || pomodoro > 60 || pomodoro < 1 || validator.isEmpty(pomodoro)) {
@@ -138,7 +139,10 @@ export const ModalSettings = ({ openModal }) => {
 
             >
 
-                <form className={(isClosing) ? `${styles.modalContainer} ${styles.closeModal}` : styles.modalContainer}>
+                <form
+                    onSubmit={handleSaveSettings}
+
+                    className={(isClosing) ? `${styles.modalContainer} ${styles.closeModal}` : styles.modalContainer}>
 
                     <img src={image} alt="astronaut" className={styles.image} />
 
@@ -214,7 +218,7 @@ export const ModalSettings = ({ openModal }) => {
                     <div className={styles.ModalSettingsButtonsContainer}>
                         <button
                             onClick={handleSaveSettings}
-                            type="button"
+                            type="submit"
                             className={`${styles.ModalSettingsButton} ${styles.ModalSettingsButtonSave}`}>Save</button>
                         <button
                             onClick={handleCloseModal}

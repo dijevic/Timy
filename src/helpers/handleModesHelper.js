@@ -37,7 +37,7 @@ export const handleModes = (timingMode, timingState, setSeconds, setMinutes) => 
             break;
     }
 
-    if (timingState === timingStateMode.unActived) {
+    if (timingState === timingStateMode.unActived || timingState === timingStateMode.updating) {
         setSeconds(60)
         setMinutes(minutes)
     }
