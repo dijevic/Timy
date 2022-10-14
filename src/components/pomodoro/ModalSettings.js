@@ -208,7 +208,7 @@ export const ModalSettings = ({ openModal }) => {
                     <div className={styles.ModalSettingsButtonsContainer}>
                         <button
                             onClick={handleSaveSettings}
-                            type="submit"
+                            type="button"
                             className={`${styles.ModalSettingsButton} ${styles.ModalSettingsButtonSave}`}>Save</button>
                         <button
                             onClick={handleCloseModal}

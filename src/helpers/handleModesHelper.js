@@ -12,7 +12,6 @@ export const handleModes = (timingMode, timingState, setSeconds, setMinutes) => 
 
         case timingTypesModes.pomodoro:
 
-
             minutes = Math.floor(localStorageValue) || 25
 
 

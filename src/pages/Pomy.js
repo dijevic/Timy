@@ -3,7 +3,8 @@ import React, { useRef, useState } from 'react'
 // context
 import { modeContext } from '../context/mainContext'
 
-
+// helper
+import { setTotalPomodoros } from '../helpers/setTotalPomodoros'
 
 // components
 import { ActionButtons } from '../components/pomodoro/ActionButtons'
@@ -29,8 +30,10 @@ export const Pomy = () => {
 
     const [seconds, setSeconds] = useState(0)
     const [minutes, setMinutes] = useState(0)
+    const [pomodoroNumber, setpomodoroNumber] = useState(setTotalPomodoros())
 
     const [timingMode, setTimingMode] = useState(timingTypesModes.pomodoro)
+
 
 
     const [openModal, setOpenModal] = useState(false)
@@ -54,14 +57,10 @@ export const Pomy = () => {
 
 
 
-
-
-
-
     return (
 
 
-        < modeContext.Provider value={{ timingMode, setTimingMode, timingState, setTimingState }}>
+        < modeContext.Provider value={{ timingMode, setTimingMode, timingState, setTimingState, pomodoroNumber, setpomodoroNumber }}>
 
 
             {
@@ -98,7 +97,12 @@ export const Pomy = () => {
                         navigationRef={navRef} />
 
 
-                    <p>Total Pomodoros : </p>
+                    <p
+                        className={styles.totalPomodoros}>
+                        Total Pomodoros :
+
+                        <span className={styles.totalPomodorosNumber}>{pomodoroNumber}</span>
+                    </p>
 
 
 

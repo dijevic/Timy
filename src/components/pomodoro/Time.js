@@ -17,13 +17,12 @@ import { handleTimingInterval } from '../../helpers/handleTimingInterval'
 export const Time = ({ seconds, minutes, setSeconds, setMinutes }) => {
 
 
-    const { timingMode, timingState, setTimingState, setTimingMode } = useContext(modeContext)
+    const { timingMode, timingState, setTimingState, setTimingMode, setpomodoroNumber } = useContext(modeContext)
 
     let secondsIntervalRef = useRef()
     const loadingRef = useRef()
     const loadingRef2 = useRef()
     const secondsStart = '00'
-
 
 
 
@@ -38,13 +37,16 @@ export const Time = ({ seconds, minutes, setSeconds, setMinutes }) => {
             setMinutes,
             setSeconds,
             timingMode,
-            setTimingMode
+            setTimingMode,
+            setpomodoroNumber
         }
+
+
 
         handleTimingInterval(handletimingArgs)
 
 
-    }, [timingState, seconds, minutes, setMinutes, setSeconds, setTimingState, setTimingMode, timingMode])
+    }, [timingState, seconds, minutes, setMinutes, setSeconds, setTimingState, setTimingMode, timingMode, setpomodoroNumber])
 
     useEffect(() => {
 
@@ -62,6 +64,7 @@ export const Time = ({ seconds, minutes, setSeconds, setMinutes }) => {
 
 
     }, [timingMode, timingState, setMinutes, setSeconds, setTimingState])
+
 
 
 

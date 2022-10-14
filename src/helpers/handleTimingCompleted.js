@@ -1,6 +1,9 @@
 import { timingTypesModes } from "../config/modes";
+import { playSound } from "./playSound";
+import { totalPomodoros } from "./totalPomodoros";
 
-export const handleTimingCompleted = (timingMode, setTimingMode) => {
+export const handleTimingCompleted = (timingMode, setTimingMode, setpomodoroNumber) => {
+    playSound()
 
 
     switch (timingMode) {
@@ -11,6 +14,8 @@ export const handleTimingCompleted = (timingMode, setTimingMode) => {
             break;
         case timingTypesModes.pomodoro:
             setTimingMode(timingTypesModes.shortBreaking)
+            totalPomodoros(setpomodoroNumber)
+
 
             break;
         case timingTypesModes.longBreaking:
@@ -22,6 +27,7 @@ export const handleTimingCompleted = (timingMode, setTimingMode) => {
         default:
             break;
     }
+
 
 
 }

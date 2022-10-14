@@ -5,6 +5,26 @@
     min-height: 100vh;
     width: 100%;
     padding: 10px;
+
+   
+}
+
+.totalPomodoros{
+    font-size:1.5rem;
+    line-height:2.5rem;
+    color:vars.$white;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    margin: 20px 0px;
+
+    .totalPomodorosNumber{
+        margin-left: 25px;
+        font-weight: 600;
+        font-size: 1.3rem;
+        line-height: 2rem;
+        border-bottom: 2px solid vars.$purple;
+    }
 }
 
 .title{

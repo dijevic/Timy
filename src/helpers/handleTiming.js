@@ -2,13 +2,12 @@ import { timingStateMode } from "../config/modes"
 import { handleTimingCompleted } from "./handleTimingCompleted"
 
 // discount minutes or seconds
-export const handleTiming = (seconds, minutes, setTimingState, setMinutes, setSeconds, timingState, timingMode, setTimingMode) => {
-
+export const handleTiming = (seconds, minutes, setTimingState, setMinutes, setSeconds, timingState, timingMode, setTimingMode, setpomodoroNumber) => {
 
     // verify if the pomodoro is completed
 
     if (seconds === 0 && minutes === 0) {
-        handleTimingCompleted(timingMode, setTimingMode)
+        handleTimingCompleted(timingMode, setTimingMode, setpomodoroNumber)
         setTimingState(timingStateMode.unActived)
         return
     }

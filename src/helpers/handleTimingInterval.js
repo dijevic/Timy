@@ -12,14 +12,15 @@ export const handleTimingInterval = ({
     setMinutes,
     setSeconds,
     timingMode,
-    setTimingMode
+    setTimingMode,
+    setpomodoroNumber
 }) => {
     if (timingState === timingStateMode.started) {
         // cleaning the setTimeout to avoid ERRORS
         window.clearTimeout(secondsIntervalRef.current)
 
         secondsIntervalRef.current = setTimeout(() => {
-            handleTiming(seconds, minutes, setTimingState, setMinutes, setSeconds, timingState, timingMode, setTimingMode)
+            handleTiming(seconds, minutes, setTimingState, setMinutes, setSeconds, timingState, timingMode, setTimingMode, setpomodoroNumber)
 
         }, 1000);
 
