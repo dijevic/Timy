@@ -9,6 +9,8 @@
    
 }
 
+
+
 .totalPomodoros{
     font-size:1.5rem;
     line-height:2.5rem;
@@ -342,7 +344,14 @@
         animation-name:grow , opacity;
         animation-duration:.6s;
         animation-iteration-count: initial;
-        min-height: 80vh;
+        min-height: 60vh;
+
+        .image{
+
+            width: 100px;
+            height:100px;
+        
+        }
 
 
         
@@ -352,9 +361,9 @@
             font-size:1.8rem;
             line-height: 1.8rem;
             font-weight: 600;
-            margin-top:20px;
+            margin-top:0px;
             border-bottom: 2px solid vars.$purple2;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
             padding-bottom:10px;
             
         }
@@ -368,7 +377,7 @@
             text-align: left;
             width: 100%;
             padding-left: 20px;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
 
@@ -401,7 +410,7 @@
     
         .settingsOption{
             width:100%;
-            margin-top: 30px;
+            margin-top: 20px;
             border-radius: 20px;
             display: flex;
             justify-content: space-between;
@@ -440,7 +449,7 @@
   
 
         .ModalSettingsButtonsContainer{
-            margin-top: 40px;
+            margin-top: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -594,6 +603,11 @@
 }
 @keyframes fadeInLeft {
     0%{transform:translateX(-100%)};
+    100%{transform:translateX(0)};
+    
+}
+@keyframes fadeInLeftShort {
+    0%{transform:translateX(-1)};
     100%{transform:translateX(0)};
     
 }

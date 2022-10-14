@@ -1,13 +1,17 @@
 import React, { useState, useContext, useRef } from 'react'
 import validator from 'validator'
 
-import { timingTypesModes } from '../../config/modes'
+// image
+
+import image from '../../assets/shiba.png'
+
 import { modeContext } from '../../context/mainContext'
 
 // hooks
 import { useForm } from '../../hooks/useForm'
 // types
 import { timingStateMode } from '../../config/modes'
+import { timingTypesModes } from '../../config/modes'
 // css
 import styles from '../../scss/components/pomodoro.module.scss'
 
@@ -135,6 +139,8 @@ export const ModalSettings = ({ openModal }) => {
             >
 
                 <form className={(isClosing) ? `${styles.modalContainer} ${styles.closeModal}` : styles.modalContainer}>
+
+                    <img src={image} alt="astronaut" className={styles.image} />
 
                     <h2 className={styles.modalTitle}>Settings</h2>
 
