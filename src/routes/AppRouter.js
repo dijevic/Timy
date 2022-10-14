@@ -12,10 +12,8 @@ export const AppRouter = () => {
 
 
     useEffect(() => {
-        window.addEventListener('load', () => {
-            console.log('cargo')
-            setLoading(false)
-        })
+
+        setLoading(false)
     }, [])
 
     if (loading) {
