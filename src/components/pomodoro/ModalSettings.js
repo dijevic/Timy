@@ -118,6 +118,11 @@ export const ModalSettings = ({ openModal }) => {
         handleCloseModal()
     }
 
+    const numberFormatHandler = ({target})=>{
+       target.value = target.value.replaceAll(/[^0-9]*/gi , '')
+
+    }
+
 
 
 
@@ -157,6 +162,8 @@ export const ModalSettings = ({ openModal }) => {
                                 step="1"
                                 value={pomodoro}
                                 onChange={handleInputChange}
+                                onInput={numberFormatHandler}
+
                             />
 
                         </span>
@@ -169,13 +176,14 @@ export const ModalSettings = ({ openModal }) => {
                             <input
                                 name={timingTypesModes.shortBreaking}
                                 className={styles.inputNumber}
-                                type="number"
+                                type="text"
                                 max={60}
 
                                 min="1"
                                 step="1"
                                 value={shortBreaking}
                                 onChange={handleInputChange}
+                                onInput={numberFormatHandler}
                             />
 
                         </span>
@@ -194,6 +202,8 @@ export const ModalSettings = ({ openModal }) => {
                                 step="1"
                                 value={longBreaking}
                                 onChange={handleInputChange}
+                                onInput={numberFormatHandler}
+
                             />
                         </span>
 
