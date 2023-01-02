@@ -155,7 +155,7 @@ export const ModalSettings = ({ openModal }) => {
                             <input
                                 name={timingTypesModes.pomodoro}
                                 className={styles.inputNumber}
-                                type="number"
+                                type="text"
 
                                 min="1"
                                 max={60}
@@ -195,7 +195,7 @@ export const ModalSettings = ({ openModal }) => {
                             <input
                                 name={timingTypesModes.longBreaking}
                                 className={styles.inputNumber}
-                                type="number"
+                                type="text"
                                 max={60}
 
                                 min="1"
