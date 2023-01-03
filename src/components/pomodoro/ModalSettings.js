@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from 'react'
+import React, { useState, useContext, useRef , useEffect } from 'react'
 import validator from 'validator'
 
 // image
@@ -16,26 +16,53 @@ import { timingTypesModes } from '../../config/modes'
 import styles from '../../scss/components/pomodoro.module.scss'
 
 
-export const ModalSettings = ({ openModal }) => {
+export const ModalSettings = ({ openModal , isOpen}) => {
 
     const { setTimingState } = useContext(modeContext)
     const divRef = useRef()
-
-
+    
+    
     const initialState = {
         [timingTypesModes.pomodoro]: localStorage.getItem(timingTypesModes.pomodoro) || 25,
         [timingTypesModes.shortBreaking]: localStorage.getItem(timingTypesModes.shortBreaking) || 5,
         [timingTypesModes.longBreaking]: localStorage.getItem(timingTypesModes.longBreaking) || 15,
 
     }
-
+    
     const [InputValues, handleInputChange] = useForm(initialState)
-
+    
     const [uiError, setUiError] = useState(false)
-
+    
     const { pomodoro, shortBreaking, longBreaking } = InputValues
-
+    
     const [isClosing, setIsClosing] = useState(false)
+    
+    const keyUpEventRef = useRef()
+
+    keyUpEventRef.current = (e)=>{
+        console.log(e)
+        if(e.key === 'Escape' ) openModal()
+    }
+
+    useEffect(() => {
+
+        const keyUpFunction =  keyUpEventRef.current
+        window.document.addEventListener('keydown', keyUpFunction)
+
+        return () => {
+            window.document.removeEventListener('keydown',keyUpFunction)
+          }
+    }, [])
+
+    useEffect(() => {
+     console.log('hello')
+     console.log(isOpen)
+    }, [])
+    
+
+ 
+    
+    
 
 
 

@@ -51,12 +51,6 @@ export const Pomy = () => {
 
 
 
-
-
-
-
-
-
     return (
 
 
@@ -65,7 +59,7 @@ export const Pomy = () => {
 
             {
                 (openModal) &&
-                <ModalSettings openModal={handleOpenModal} />
+                <ModalSettings openModal={handleOpenModal} isOpen={openModal} />
 
             }
 
