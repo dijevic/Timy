@@ -1,34 +1,29 @@
-import React, { useState } from 'react'
-import { AdjustmentIcon } from '../svgs/AdjustmentIcon'
+import React, { useState } from "react";
+import { AdjustmentIcon } from "../svgs/AdjustmentIcon";
 // import { ClockIcon } from '../svgs/ClockIcon'
 // import { HomeIcon } from '../svgs/HomeIcon'
 
-import styles from '../../scss/components/pomodoro.module.scss'
+import styles from "../../scss/components/pomodoro.module.scss";
 // import { Link } from 'react-router-dom'
-import { CloseIcon } from '../svgs/CloseIcon'
-
+import { CloseIcon } from "../svgs/CloseIcon";
 
 export const Navigation = ({ openModal, navigationRef }) => {
+  const [open, setOpen] = useState(false);
 
+  const handleOpenModal = () => {
+    openModal();
+  };
 
-    const [open, setOpen] = useState(false)
+  navigationRef.current = setOpen;
 
+  const handleCloseNavigation = () => {
+    setOpen(false);
+  };
 
-    const handleOpenModal = () => {
-
-        openModal()
-    }
-
-    navigationRef.current = setOpen
-
-    const handleCloseNavigation = () => {
-        setOpen(false)
-    }
-
-    return (
-        <nav className={(open) ? `${styles.nav} ${styles.navOpen}` : `${styles.nav}`}>
-            <ul>
-                {/* <li>
+  return (
+    <nav className={open ? `${styles.nav} ${styles.navOpen}` : `${styles.nav}`}>
+      <ul>
+        {/* <li>
 
                     <Link
                         className={styles.navItem} to='/'>
@@ -48,31 +43,19 @@ export const Navigation = ({ openModal, navigationRef }) => {
 
 
                 </li> */}
-                <li>
-                    <span
-                        className={styles.navItem}
-                        onClick={handleOpenModal}>
-                        <AdjustmentIcon />
+        <li>
+          <span className={styles.navItem} onClick={handleOpenModal}>
+            <AdjustmentIcon />
+            Settings
+          </span>
+        </li>
+      </ul>
 
-                        Settings
-                    </span>
+      <span onClick={handleCloseNavigation} className={styles.closeIcon}>
+        <CloseIcon />
+      </span>
 
-
-                </li>
-            </ul>
-
-
-
-
-
-            <span
-                onClick={handleCloseNavigation}
-                className={styles.closeIcon}>
-                <CloseIcon />
-            </span>
-
-
-            <h2 className={styles.appName}>Pomy</h2>
-        </nav>
-    )
-}
+      <h2 className={styles.appName}>Pomy</h2>
+    </nav>
+  );
+};
